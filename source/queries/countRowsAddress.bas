@@ -1,4 +1,4 @@
-﻿dbMemo "SQL" ="SELECT Count(*) AS counter\015\012FROM AddressData"
+﻿dbMemo "SQL" ="SELECT Count(*) AS counter\015\012FROM C_Address"
 dbMemo "Connect" ="ODBC;DSN=address;DATABASE=Address"
 dbBoolean "ReturnsRecords" ="-1"
 dbInteger "ODBCTimeout" ="60"

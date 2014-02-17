@@ -1,0 +1,13 @@
+﻿dbMemo "SQL" ="SELECT COLUMN_NAME FROM [INFORMATION_SCHEMA].COLUMNS WHERE COLUMN_NAME LIKE 'upc"
+    "id%' AND TABLE_NAME = 'C_Address'"
+dbMemo "Connect" ="ODBC;DSN=address;DATABASE=Address"
+dbBoolean "ReturnsRecords" ="-1"
+dbInteger "ODBCTimeout" ="60"
+dbBoolean "OrderByOn" ="0"
+dbByte "Orientation" ="0"
+dbByte "DefaultView" ="2"
+dbBoolean "FilterOnLoad" ="0"
+dbBoolean "OrderByOnLoad" ="-1"
+dbByte "PublishToWeb" ="1"
+dbBoolean "LogMessages" ="0"
+End

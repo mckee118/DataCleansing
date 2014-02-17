@@ -1,6 +1,6 @@
 ﻿dbMemo "SQL" ="SELECT a.address1, a.address2, a.address3, a.address4, a.address5, a.postcode AS"
     " addPostcode, a.uprn AS addUPRN, a.upcid_n_wp, p.building_number, p.primary_thor"
-    "fare, p.postcode AS POINTPostcode, p.uprn AS POINTUPRN\015\012FROM h_address AS "
+    "fare, p.postcode AS POINTPostcode, p.uprn AS POINTUPRN\015\012FROM C_address AS "
     "a INNER JOIN POINTER AS p ON a.uprn = p.uprn;\015\012"
 dbMemo "Connect" ="ODBC;DSN=address;DATABASE=Address"
 dbBoolean "ReturnsRecords" ="-1"
@@ -45,27 +45,39 @@ dbByte "PublishToWeb" ="1"
         dbLong "AggregateType" ="-1"
     End
         dbText "Name" ="address1"
+        dbLong "AggregateType" ="-1"
     End
         dbText "Name" ="address2"
+        dbLong "AggregateType" ="-1"
     End
         dbText "Name" ="address3"
+        dbLong "AggregateType" ="-1"
     End
         dbText "Name" ="address4"
+        dbLong "AggregateType" ="-1"
     End
         dbText "Name" ="address5"
+        dbLong "AggregateType" ="-1"
     End
         dbText "Name" ="addPostcode"
+        dbLong "AggregateType" ="-1"
     End
         dbText "Name" ="addUPRN"
+        dbLong "AggregateType" ="-1"
     End
         dbText "Name" ="upcid_n_wp"
+        dbLong "AggregateType" ="-1"
     End
         dbText "Name" ="building_number"
+        dbLong "AggregateType" ="-1"
     End
         dbText "Name" ="primary_thorfare"
+        dbLong "AggregateType" ="-1"
     End
         dbText "Name" ="POINTPostcode"
+        dbLong "AggregateType" ="-1"
     End
         dbText "Name" ="POINTUPRN"
+        dbLong "AggregateType" ="-1"
     End
 End

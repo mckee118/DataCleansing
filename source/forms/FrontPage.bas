@@ -9,9 +9,9 @@ PublishOption =1
     GridY =10
     Width =11565
     DatasheetFontHeight =11
-    ItemSuffix =14
-    Right =12960
-    Bottom =7920
+    ItemSuffix =18
+    Right =17265
+    Bottom =7890
     DatasheetGridlinesColor =14806254
         0x87b0563c9b51e440
     End
@@ -193,6 +193,7 @@ PublishOption =1
                     LayoutCachedHeight =995
                     ForeTint =100.0
                 End
+                    Enabled = NotDefault
                     OverlapFlags =215
                     Left =3345
                     Top =1920
@@ -248,6 +249,7 @@ PublishOption =1
                     WebImagePaddingBottom =1
                     Overlaps =1
                 End
+                    Enabled = NotDefault
                     OverlapFlags =215
                     Left =3345
                     Top =2884
@@ -326,10 +328,10 @@ PublishOption =1
                     LayoutCachedHeight =1562
                 End
                     OverlapFlags =85
-                    Left =5499
-                    Top =4762
+                    Left =8447
+                    Top =4535
                     Width =2324
-                    Height =630
+                    Height =624
                     TabIndex =5
                     ForeColor =4210752
                     Name ="Command10"
@@ -337,10 +339,10 @@ PublishOption =1
                     OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =5499
-                    LayoutCachedTop =4762
-                    LayoutCachedWidth =7823
-                    LayoutCachedHeight =5392
+                    LayoutCachedLeft =8447
+                    LayoutCachedTop =4535
+                    LayoutCachedWidth =10771
+                    LayoutCachedHeight =5159
                     BackColor =14136213
                     BorderColor =14136213
                     HoverColor =15060409
@@ -403,6 +405,7 @@ On Error GoTo ErrorHandler:
        ChangePTStatement "countRowsAddress", strSQL
        RecordCount.Caption = "There are " & Format(DLookup("[counter]", "countRowsAddress"), "##,##") & " records in the " & strTable & " table"
        RecordCount.Visible = True
+       Command1.Enabled = True
 Exit Sub
 ErrorHandler:
     MsgBox "An error occured -  error  " & Err.Number & ": " & Err.Description
@@ -410,22 +413,31 @@ End Sub
 
 Private Sub Command1_Click()
     On Error GoTo ErrorHandler:
+
        Dim strSQL As String
        Dim strTable As String
+       
        strTable = Combo8.Value 'set this to the value in dropdown list
-    
-       strSQL = "ALTER TABLE "
-       strSQL = strSQL & strTable & " add UPCID_N_WP varchar(128), UPCID_N_NP varchar(128), UPCID_WS_WP varchar(128), UPCID_WS_NP varchar(128), UPRN varchar(128), UPCID_CS_WP varchar(128), UPCID_CS_NP varchar(128), UPCID_N_NVD_WP varchar(128), UPCID_N_NVD_NP varchar(128), UPCID_NVD_WP varchar(128), UPCID_NVD_NP varchar(128), UPCID_N_FC_WP varchar(128), UPCID_N_FC_NP varchar(128), UPCID_N_3C_WP varchar(128), UPCID_N_3C_NP varchar(128)"
+          
+       DoCmd.OpenForm "selectUPCIDs"
+          
+       Forms!selectUPCIDs!List0.RowSourceType = "Value List"
+       Forms!selectUPCIDs!List0.RowSource = "UPCID_N_WP, UPCID_N_NP, UPCID_WS_WP, UPCID_WS_NP, UPCID_CS_WP, UPCID_CS_NP, UPCID_N_NVD_WP, UPCID_N_NVD_NP, UPCID_NVD_WP, UPCID_NVD_NP, UPCID_N_FC_WP, UPCID_N_FC_NP, UPCID_N_3C_WP, UPCID_N_3C_NP"
+       
+       Forms!selectUPCIDs!Text7.Value = "create"
+       'strSQL = "ALTER TABLE "
+       'strSQL = strSQL & strTable & " add UPCID_N_WP varchar(128), UPCID_N_NP varchar(128), UPCID_WS_WP varchar(128), UPCID_WS_NP varchar(128), UPRN varchar(128), UPCID_CS_WP varchar(128), UPCID_CS_NP varchar(128), UPCID_N_NVD_WP varchar(128), UPCID_N_NVD_NP varchar(128), UPCID_NVD_WP varchar(128), UPCID_NVD_NP varchar(128), UPCID_N_FC_WP varchar(128), UPCID_N_FC_NP varchar(128), UPCID_N_3C_WP varchar(128), UPCID_N_3C_NP varchar(128)"
        'added more UPCID's
        
        'call the pass through function
-       ChangePTStatement "createUPCIDsAddress", strSQL
+       'ChangePTStatement "createUPCIDsAddress", strSQL
        
-       DoCmd.SetWarnings (False)
-       DoCmd.OpenQuery ("createUPCIDsAddress")
-       MsgBox "Columns Created", vbOKOnly, "Complete!"
-       DoCmd.SetWarnings (True)
-       Me.Command1.Enabled = False
+       'DoCmd.SetWarnings (False)
+       'DoCmd.OpenQuery ("createUPCIDsAddress")
+       'MsgBox "Columns Created", vbOKOnly, "Complete!"
+       'DoCmd.SetWarnings (True)
+       'Me.Command1.Enabled = False
+             
     Exit Sub
 ErrorHandler:
     MsgBox "An error occured -  error  " & Err.Number & ": " & Err.Description
@@ -437,54 +449,10 @@ Private Sub Command10_Click()
        Dim strTable As String
        strTable = Combo8.Value 'set this to the value in your dropdown list
     
-       strSQL = "select a.UPCID_N_WP as addUPCID_N_WP, p.UPCID_N_WP as PUPCID_N_WP, p.UPRN" _
-                & vbNewLine _
-                & "into tempPointer" _
-                & vbNewLine _
-                & "from " & strTable & " a" _
-                & vbNewLine _
-                & "inner join POINTER p" _
-                & vbNewLine _
-                & "on a.upcid_n_wp = p.upcid_n_wp" _
-                & vbNewLine
-        strSQL = strSQL _
-                & vbNewLine _
-                & "select addUPCID_N_WP, COUNT(*) as counter" _
-                & vbNewLine _
-                & "into tempAddress" _
-                & vbNewLine _
-                & "from tempPointer" _
-                & vbNewLine _
-                & "group by addUPCID_N_WP" _
-                & vbNewLine _
-                & "having COUNT(*) = 1" _
-                & vbNewLine
-        strSQL = strSQL _
-                & vbNewLine _
-                & "Update main" _
-                & vbNewLine _
-                & "Set main.uprn = tp.uprn" _
-                & vbNewLine _
-                & "from " & strTable & " main" _
-                & vbNewLine _
-                & "inner join tempPointer tp" _
-                & vbNewLine _
-                & "on main.UPCID_N_WP = tp.PUPCID_N_WP" _
-                & vbNewLine _
-                & "inner join tempAddress ta" _
-                & vbNewLine _
-                & "on main.UPCID_N_WP = ta.addUPCID_N_WP" _
-                & vbNewLine _
-                & "where main.uprn Is Null" _
-                & vbNewLine
-        strSQL = strSQL _
-                & vbNewLine _
-                & "drop table tempPointer" _
-                & vbNewLine _
-                & "drop table tempAddress"
+       
        
        'call the pass through function
-       ChangePTStatement "addUPRN", strSQL
+       'ChangePTStatement "addUPRN", strSQL
        
        DoCmd.SetWarnings (False)
        DoCmd.OpenQuery ("addUPRN")
@@ -515,31 +483,47 @@ Private Sub Command4_Click()
        Dim strSQLDefault As String
        Dim strTable As String
        strTable = Combo8.Value 'set this to the value in your dropdown list
-    
-       strSQLDefault = "Update " & strTable
-       strSQL = strSQLDefault & " set upcid_n_wp = REPLACE(DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers') + ISNULL(POSTCODE, ''), ' ', '')"
-       strSQL = strSQL & strSQLDefault & " set upcid_n_np = REPLACE(DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')+ISNULL(POSTCODE, ''), 'numbers'), ' ', '')"
-       strSQL = strSQL & strSQLDefault & " set upcid_ws_wp = dbo.unwanted(REPLACE(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')+ISNULL(POSTCODE, ''), ' ', ''))"
-       strSQL = strSQL & strSQLDefault & " set upcid_ws_np = dbo.unwanted(REPLACE(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')+DBO.fn_extract_chars(ISNULL(POSTCODE, ''), 'numbers'), ' ', ''))"
-       strSQL = strSQL & strSQLDefault & " set upcid_cs_wp = dbo.unwanted(REPLACE(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'letters') + ISNULL(POSTCODE, ''), ' ', ''))"
-       strSQL = strSQL & strSQLDefault & " set upcid_cs_np = dbo.unwanted(REPLACE(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'letters')+POINTER.DBO.fn_extract_chars(ISNULL(POSTCODE, ''), 'numbers'), ' ', ''))"
-       strSQL = strSQL & strSQLDefault & " set upcid_n_nvd_wp = dbo.unwanted(REPLACE(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers')+CENSUS2011.DBO.nvd(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')) +ISNULL(POSTCODE, ''), ' ', ''))"
-       strSQL = strSQL & strSQLDefault & " set upcid_n_nvd_np = dbo.unwanted(REPLACE(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers')+CENSUS2011.DBO.nvd(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')) +POINTER.DBO.fn_extract_chars(ISNULL(POSTCODE, ''), 'numbers'), ' ', ''))"
-       strSQL = strSQL & strSQLDefault & " set upcid_nvd_wp = dbo.unwanted(REPLACE(CENSUS2011.DBO.nvd(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')) +ISNULL(POSTCODE, ''), ' ', ''))"
-       strSQL = strSQL & strSQLDefault & " set upcid_nvd_np = dbo.unwanted(REPLACE(CENSUS2011.DBO.nvd(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')) +POINTER.DBO.fn_extract_chars(ISNULL(POSTCODE, ''), 'numbers'), ' ', ''))"
-       strSQL = strSQL & strSQLDefault & " set upcid_n_fc_wp = dbo.unwanted(REPLACE(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers')+LEFT(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'letters'), 1)+ISNULL(POSTCODE, ''), ' ', ''))"
-       strSQL = strSQL & strSQLDefault & " set upcid_n_fc_np = dbo.unwanted(REPLACE(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers')+LEFT(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'letters'), 1)+POINTER.DBO.fn_extract_chars(ISNULL(POSTCODE, ''), 'numbers'), ' ', ''))"
-       strSQL = strSQL & strSQLDefault & " set upcid_n_3c_wp = dbo.unwanted(REPLACE(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers')+LEFT(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'letters'), 3)+ISNULL(POSTCODE, ''), ' ', ''))"
-       strSQL = strSQL & strSQLDefault & " set upcid_n_3c_np = dbo.unwanted(REPLACE(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers')+LEFT(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'letters'), 3)+POINTER.DBO.fn_extract_chars(ISNULL(POSTCODE, ''), 'numbers'), ' ', ''))"
+       
+       strSQL = "SELECT COLUMN_NAME"
+       strSQL = strSQL & " FROM [INFORMATION_SCHEMA].COLUMNS"
+       strSQL = strSQL & " WHERE COLUMN_NAME LIKE 'upcid%' AND TABLE_NAME = " & "'" & strTable & "'"
        
        'call the pass through function
-       ChangePTStatement "addUPCIDsAddress", strSQL
+       ChangePTStatement "getUPCIDColumns", strSQL
        
-        DoCmd.SetWarnings (False)
-        DoCmd.OpenQuery ("addUPCIDsAddress")
-        MsgBox "UPCIDs Added", vbOKOnly, "Complete"
-        DoCmd.SetWarnings (True)
-        Me.Command4.Enabled = False
+       
+       DoCmd.OpenForm "selectUPCIDs"
+          
+       Forms!selectUPCIDs!List0.RowSourceType = "Table/Query"
+       Forms!selectUPCIDs!List0.RowSource = "getUPCIDColumns"
+       
+       Forms!selectUPCIDs!Text7.Value = "add"
+       
+       'strSQLDefault = "Update " & strTable
+       'strSQL = strSQLDefault & " set upcid_n_wp = REPLACE(DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers') + ISNULL(POSTCODE, ''), ' ', '')"
+       'strSQL = strSQL & strSQLDefault & " set upcid_n_np = REPLACE(DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')+ISNULL(POSTCODE, ''), 'numbers'), ' ', '')"
+       'strSQL = strSQL & strSQLDefault & " set upcid_ws_wp = dbo.unwanted(REPLACE(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')+ISNULL(POSTCODE, ''), ' ', ''))"
+       'strSQL = strSQL & strSQLDefault & " set upcid_ws_np = dbo.unwanted(REPLACE(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')+DBO.fn_extract_chars(ISNULL(POSTCODE, ''), 'numbers'), ' ', ''))"
+       'strSQL = strSQL & strSQLDefault & " set upcid_cs_wp = dbo.unwanted(REPLACE(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'letters') + ISNULL(POSTCODE, ''), ' ', ''))"
+       'strSQL = strSQL & strSQLDefault & " set upcid_cs_np = dbo.unwanted(REPLACE(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'letters')+POINTER.DBO.fn_extract_chars(ISNULL(POSTCODE, ''), 'numbers'), ' ', ''))"
+       'strSQL = strSQL & strSQLDefault & " set upcid_n_nvd_wp = dbo.unwanted(REPLACE(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers')+CENSUS2011.DBO.nvd(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')) +ISNULL(POSTCODE, ''), ' ', ''))"
+       'strSQL = strSQL & strSQLDefault & " set upcid_n_nvd_np = dbo.unwanted(REPLACE(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers')+CENSUS2011.DBO.nvd(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')) +POINTER.DBO.fn_extract_chars(ISNULL(POSTCODE, ''), 'numbers'), ' ', ''))"
+       'strSQL = strSQL & strSQLDefault & " set upcid_nvd_wp = dbo.unwanted(REPLACE(CENSUS2011.DBO.nvd(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')) +ISNULL(POSTCODE, ''), ' ', ''))"
+       'strSQL = strSQL & strSQLDefault & " set upcid_nvd_np = dbo.unwanted(REPLACE(CENSUS2011.DBO.nvd(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')) +POINTER.DBO.fn_extract_chars(ISNULL(POSTCODE, ''), 'numbers'), ' ', ''))"
+       'strSQL = strSQL & strSQLDefault & " set upcid_n_fc_wp = dbo.unwanted(REPLACE(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers')+LEFT(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'letters'), 1)+ISNULL(POSTCODE, ''), ' ', ''))"
+       'strSQL = strSQL & strSQLDefault & " set upcid_n_fc_np = dbo.unwanted(REPLACE(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers')+LEFT(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'letters'), 1)+POINTER.DBO.fn_extract_chars(ISNULL(POSTCODE, ''), 'numbers'), ' ', ''))"
+       'strSQL = strSQL & strSQLDefault & " set upcid_n_3c_wp = dbo.unwanted(REPLACE(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers')+LEFT(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'letters'), 3)+ISNULL(POSTCODE, ''), ' ', ''))"
+       'strSQL = strSQL & strSQLDefault & " set upcid_n_3c_np = dbo.unwanted(REPLACE(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers')+LEFT(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'letters'), 3)+POINTER.DBO.fn_extract_chars(ISNULL(POSTCODE, ''), 'numbers'), ' ', ''))"
+       
+       'call the pass through function
+       'ChangePTStatement "addUPCIDsAddress", strSQL
+       
+        'DoCmd.SetWarnings (False)
+        'DoCmd.OpenQuery ("addUPCIDsAddress")
+        'MsgBox "UPCIDs Added", vbOKOnly, "Complete"
+        'DoCmd.SetWarnings (True)
+        'Me.Command4.Enabled = False
+        Command10.Enabled = True
     Exit Sub
 ErrorHandler:
     MsgBox "An error occured -  error  " & Err.Number & ": " & Err.Description
