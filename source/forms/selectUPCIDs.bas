@@ -314,6 +314,7 @@ PublishOption =1
                     WebImagePaddingRight =1
                     WebImagePaddingBottom =1
                 End
+                    Visible = NotDefault
                     OverlapFlags =85
                     IMESentenceMode =3
                     Left =3968

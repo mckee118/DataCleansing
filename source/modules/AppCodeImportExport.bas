@@ -46,7 +46,7 @@ Option Explicit
 ' Provide a comma separated list of table names, or an empty string
 ' ("") if no tables are to be exported with the source code.
 
-Private Const INCLUDE_TABLES = ""
+Private Const INCLUDE_TABLES = "matchKeys"
 
 ' Do more aggressive removal of superfluous blobs from exported MS
 ' Access source code?

@@ -10,8 +10,8 @@ PublishOption =1
     Width =11565
     DatasheetFontHeight =11
     ItemSuffix =18
-    Right =17265
-    Bottom =7890
+    Right =1890
+    Bottom =7740
     DatasheetGridlinesColor =14806254
         0x87b0563c9b51e440
     End
@@ -193,7 +193,6 @@ PublishOption =1
                     LayoutCachedHeight =995
                     ForeTint =100.0
                 End
-                    Enabled = NotDefault
                     OverlapFlags =215
                     Left =3345
                     Top =1920
@@ -249,7 +248,6 @@ PublishOption =1
                     WebImagePaddingBottom =1
                     Overlaps =1
                 End
-                    Enabled = NotDefault
                     OverlapFlags =215
                     Left =3345
                     Top =2884
@@ -405,7 +403,7 @@ On Error GoTo ErrorHandler:
        ChangePTStatement "countRowsAddress", strSQL
        RecordCount.Caption = "There are " & Format(DLookup("[counter]", "countRowsAddress"), "##,##") & " records in the " & strTable & " table"
        RecordCount.Visible = True
-       Command1.Enabled = True
+       
 Exit Sub
 ErrorHandler:
     MsgBox "An error occured -  error  " & Err.Number & ": " & Err.Description
@@ -523,7 +521,7 @@ Private Sub Command4_Click()
         'MsgBox "UPCIDs Added", vbOKOnly, "Complete"
         'DoCmd.SetWarnings (True)
         'Me.Command4.Enabled = False
-        Command10.Enabled = True
+        
     Exit Sub
 ErrorHandler:
     MsgBox "An error occured -  error  " & Err.Number & ": " & Err.Description

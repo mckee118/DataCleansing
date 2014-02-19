@@ -1,0 +1,6 @@
+﻿MatchKeys	Description
+UPCID_CS_WP	All characters form street address + whole postcode
+UPCID_N_NP	Door number + only numbers from the postcode
+UPCID_N_WP	Door number of the address + whole postcode
+UPCID_WS_NP	Whole street address including numbers + just numbers from postcode
+UPCID_WS_WP	Whole street address including numbers + whole postcode
