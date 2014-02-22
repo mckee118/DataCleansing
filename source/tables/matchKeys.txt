@@ -1,6 +1,15 @@
-﻿MatchKeys	Description
-UPCID_CS_WP	All characters form street address + whole postcode
-UPCID_N_NP	Door number + only numbers from the postcode
-UPCID_N_WP	Door number of the address + whole postcode
-UPCID_WS_NP	Whole street address including numbers + just numbers from postcode
-UPCID_WS_WP	Whole street address including numbers + whole postcode
+﻿AutoId	MatchKeys	Description
+1	UPCID_N_WP	Door number of the address + whole postcode
+2	UPCID_N_NP	Door number + only numbers from postcode
+3	UPCID_WS_WP	Whole street address including numbers + whole postcode
+4	UPCID_WS_NP	Whole street address including numbers + numbers from postcode
+5	UPCID_CS_WP	All characters from street address + whole postcode
+6	UPCID_CS_NP	All characters from street address + numbers from postcode
+7	UPCID_N_NVD_WP	Door numbers + street address with no vowels or doubles + whole postcode
+8	UPCID_N_NVD_NP	Door numbers + street address with no vowels or doubles + numbers from postcode
+9	UPCID_NVD_WP	Street address with no vowels or doubles + whole postcode
+10	UPCID_NVD_NP	Street address with no vowels or doubles + numbers from postcode
+11	UPCID_N_FC_WP	Door numbers + first character of street address + whole postcode
+12	UPCID_N_FC_NP	Door numbers + first character of street address + numbers from postcode
+13	UPCID_N_3C_WP	Door numbers + first 3 characters of street address + whole postcode
+14	UPCID_N_3C_NP	Door numbers + first 3 characters of street address + numbers from postcode

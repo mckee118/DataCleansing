@@ -12,10 +12,10 @@ PublishOption =1
     Width =9354
     DatasheetFontHeight =11
     ItemSuffix =9
-    Left =3225
+    Left =3825
     Top =2415
-    Right =13125
-    Bottom =8355
+    Right =15600
+    Bottom =10335
     DatasheetGridlinesColor =14806254
         0xa9f965aa9b59e440
     End
@@ -120,7 +120,6 @@ PublishOption =1
             AlternateBackThemeColorIndex =1
             AlternateBackShade =95.0
             BackThemeColorIndex =1
-                    RowSourceTypeInt =1
                     OverlapFlags =85
                     IMESentenceMode =3
                     Left =396
@@ -130,10 +129,8 @@ PublishOption =1
                     ForeColor =4210752
                     BorderColor =10921638
                     Name ="List0"
-                    RowSourceType ="Value List"
-                    RowSource ="UPCID_N_WP, UPCID_N_NP, UPCID_WS_WP, UPCID_WS_NP, UPCID_CS_WP, UPCID_CS_NP, UPCI"
-                        "D_N_NVD_WP, UPCID_N_NVD_NP, UPCID_NVD_WP, UPCID_NVD_NP, UPCID_N_FC_WP, UPCID_N_F"
-                        "C_NP, UPCID_N_3C_WP, UPCID_N_3C_NP"
+                    RowSourceType ="Table/Query"
+                    RowSource ="getMatchKeysColumnNotPresent"
                     GridlineColor =10921638
                     AllowValueListEdits =0
 
@@ -142,7 +139,6 @@ PublishOption =1
                     LayoutCachedWidth =3401
                     LayoutCachedHeight =5102
                 End
-                    RowSourceTypeInt =1
                     OverlapFlags =85
                     MultiSelect =1
                     IMESentenceMode =3
@@ -154,7 +150,8 @@ PublishOption =1
                     ForeColor =4210752
                     BorderColor =10921638
                     Name ="List2"
-                    RowSourceType ="Value List"
+                    RowSourceType ="Table/Query"
+                    RowSource ="getMatchKeysColumnPresent"
                     GridlineColor =10921638
                     AllowValueListEdits =0
 

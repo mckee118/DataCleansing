@@ -10,8 +10,8 @@ PublishOption =1
     Width =11565
     DatasheetFontHeight =11
     ItemSuffix =18
-    Right =1890
-    Bottom =7740
+    Right =16665
+    Bottom =7890
     DatasheetGridlinesColor =14806254
         0x87b0563c9b51e440
     End
@@ -419,21 +419,14 @@ Private Sub Command1_Click()
           
        DoCmd.OpenForm "selectUPCIDs"
           
-       Forms!selectUPCIDs!List0.RowSourceType = "Value List"
-       Forms!selectUPCIDs!List0.RowSource = "UPCID_N_WP, UPCID_N_NP, UPCID_WS_WP, UPCID_WS_NP, UPCID_CS_WP, UPCID_CS_NP, UPCID_N_NVD_WP, UPCID_N_NVD_NP, UPCID_NVD_WP, UPCID_NVD_NP, UPCID_N_FC_WP, UPCID_N_FC_NP, UPCID_N_3C_WP, UPCID_N_3C_NP"
-       
        Forms!selectUPCIDs!Text7.Value = "create"
-       'strSQL = "ALTER TABLE "
-       'strSQL = strSQL & strTable & " add UPCID_N_WP varchar(128), UPCID_N_NP varchar(128), UPCID_WS_WP varchar(128), UPCID_WS_NP varchar(128), UPRN varchar(128), UPCID_CS_WP varchar(128), UPCID_CS_NP varchar(128), UPCID_N_NVD_WP varchar(128), UPCID_N_NVD_NP varchar(128), UPCID_NVD_WP varchar(128), UPCID_NVD_NP varchar(128), UPCID_N_FC_WP varchar(128), UPCID_N_FC_NP varchar(128), UPCID_N_3C_WP varchar(128), UPCID_N_3C_NP varchar(128)"
-       'added more UPCID's
+       
+       strSQL = "SELECT COLUMN_NAME FROM [INFORMATION_SCHEMA].COLUMNS WHERE COLUMN_NAME LIKE 'upcid%' AND TABLE_NAME = '" & strTable & "'"
        
        'call the pass through function
-       'ChangePTStatement "createUPCIDsAddress", strSQL
+       ChangePTStatement "getUPCIDColumns", strSQL
        
-       'DoCmd.SetWarnings (False)
-       'DoCmd.OpenQuery ("createUPCIDsAddress")
-       'MsgBox "Columns Created", vbOKOnly, "Complete!"
-       'DoCmd.SetWarnings (True)
+       Forms!selectUPCIDs.Refresh
        'Me.Command1.Enabled = False
              
     Exit Sub
