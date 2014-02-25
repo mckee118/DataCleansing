@@ -651,23 +651,23 @@ End Sub
 
 ' Build SQL to export `tbl_name` sorted by each field from first to last
 Public Function TableExportSql(tbl_name As String)
-    Dim rs As Object ' DAO.Recordset
+    Dim RS As Object ' DAO.Recordset
     Dim fieldObj As Object ' DAO.Field
     Dim sb() As String, count As Integer
 
-    Set rs = CurrentDb.OpenRecordset(tbl_name)
+    Set RS = CurrentDb.OpenRecordset(tbl_name)
 
     sb = Sb_Init()
     Sb_Append sb, "SELECT "
     count = 0
-    For Each fieldObj In rs.Fields
+    For Each fieldObj In RS.Fields
         If count > 0 Then Sb_Append sb, ", "
         Sb_Append sb, "[" & fieldObj.Name & "]"
         count = count + 1
     Next
     Sb_Append sb, " FROM [" & tbl_name & "] ORDER BY "
     count = 0
-    For Each fieldObj In rs.Fields
+    For Each fieldObj In RS.Fields
         If count > 0 Then Sb_Append sb, ", "
         Sb_Append sb, "[" & fieldObj.Name & "]"
         count = count + 1
@@ -679,7 +679,7 @@ End Function
 ' Export the lookup table `tblName` to `source\tables`.
 Private Sub ExportTable(tbl_name As String, obj_path As String)
     Dim fso, OutFile
-    Dim rs As Object ' DAO.Recordset
+    Dim RS As Object ' DAO.Recordset
     Dim fieldObj As Object ' DAO.Field
     Dim C As Long, Value As Variant
 
@@ -688,22 +688,22 @@ Private Sub ExportTable(tbl_name As String, obj_path As String)
     MkDirIfNotExist obj_path
     Set OutFile = fso.CreateTextFile(TempFile(), True, True)
 
-    Set rs = CurrentDb.OpenRecordset(TableExportSql(tbl_name))
+    Set RS = CurrentDb.OpenRecordset(TableExportSql(tbl_name))
     C = 0
-    For Each fieldObj In rs.Fields
+    For Each fieldObj In RS.Fields
         If C <> 0 Then OutFile.write vbTab
         C = C + 1
         OutFile.write fieldObj.Name
     Next
     OutFile.write vbCrLf
 
-    rs.MoveFirst
-    Do Until rs.EOF
+    RS.MoveFirst
+    Do Until RS.EOF
         C = 0
-        For Each fieldObj In rs.Fields
+        For Each fieldObj In RS.Fields
             If C <> 0 Then OutFile.write vbTab
             C = C + 1
-            Value = rs(fieldObj.Name)
+            Value = RS(fieldObj.Name)
             If IsNull(Value) Then
                 Value = ""
             Else
@@ -716,9 +716,9 @@ Private Sub ExportTable(tbl_name As String, obj_path As String)
             OutFile.write Value
         Next
         OutFile.write vbCrLf
-        rs.MoveNext
+        RS.MoveNext
     Loop
-    rs.Close
+    RS.Close
     OutFile.Close
 
     ConvertUcs2Utf8 TempFile(), obj_path & tbl_name & ".txt"
@@ -727,7 +727,7 @@ End Sub
 ' Import the lookup table `tblName` from `source\tables`.
 Private Sub ImportTable(tblName As String, obj_path As String)
     Dim db As Object ' DAO.Database
-    Dim rs As Object ' DAO.Recordset
+    Dim RS As Object ' DAO.Recordset
     Dim fieldObj As Object ' DAO.Field
     Dim fso, InFile As Object
     Dim C As Long, buf As String, Values() As String, Value As Variant
@@ -739,15 +739,15 @@ Private Sub ImportTable(tblName As String, obj_path As String)
     Set db = CurrentDb
 
     db.Execute "DELETE FROM [" & tblName & "]"
-    Set rs = db.OpenRecordset(tblName)
+    Set RS = db.OpenRecordset(tblName)
     buf = InFile.ReadLine()
     Do Until InFile.AtEndOfStream
         buf = InFile.ReadLine()
         If Len(Trim(buf)) > 0 Then
             Values = Split(buf, vbTab)
             C = 0
-            rs.AddNew
-            For Each fieldObj In rs.Fields
+            RS.AddNew
+            For Each fieldObj In RS.Fields
                 Value = Values(C)
                 If Len(Value) = 0 Then
                     Value = Null
@@ -756,13 +756,13 @@ Private Sub ImportTable(tblName As String, obj_path As String)
                     Value = Replace(Value, "\n", vbCrLf)
                     Value = Replace(Value, "\\", "\")
                 End If
-                rs(fieldObj.Name) = Value
+                RS(fieldObj.Name) = Value
                 C = C + 1
             Next
-            rs.Update
+            RS.Update
         End If
     Loop
 
-    rs.Close
+    RS.Close
     InFile.Close
 End Sub

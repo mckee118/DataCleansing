@@ -3,13 +3,15 @@ VersionRequired =20
 PublishOption =1
     PopUp = NotDefault
     Modal = NotDefault
+    RecordSelectors = NotDefault
+    NavigationButtons = NotDefault
     DividingLines = NotDefault
     AllowDesignChanges = NotDefault
     DefaultView =0
     PictureAlignment =2
     DatasheetGridlinesBehavior =3
     GridY =10
-    Width =9354
+    Width =8674
     DatasheetFontHeight =11
     ItemSuffix =9
     Left =3825
@@ -19,6 +21,7 @@ PublishOption =1
     DatasheetGridlinesColor =14806254
         0xa9f965aa9b59e440
     End
+    OnOpen ="[Event Procedure]"
     DatasheetFontName ="Calibri"
         0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000001000000
@@ -336,6 +339,7 @@ Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Compare Database
+Public UPCIDs As String
 
 Private Sub Command4_Click()
 
@@ -418,11 +422,36 @@ End Sub
 
 Public Sub ChangePTStatement(p_QueryName As String, p_sql As String)
 'for changing pass-through's in this db
-    Dim qdef As dao.QueryDef
+    Dim qdef As DAO.QueryDef
  
     Set qdef = CurrentDb.QueryDefs(p_QueryName)
-    qdef.SQL = p_sql
+    qdef.sql = p_sql
     qdef.Close
     Set qdef = Nothing
  
+End Sub
+
+Private Sub Form_Open(Cancel As Integer)
+Dim RS As DAO.Recordset
+Dim sql As String
+
+UPCIDs = ""
+       
+sql = "select MatchKeys from getMatchKeysColumnPresent"
+       
+Set RS = CurrentDb.OpenRecordset(sql)
+Do While Not RS.EOF
+   UPCIDs = UPCIDs & RS("MatchKeys") & ", "
+   RS.MoveNext
+Loop
+RS.Close
+Set RS = Nothing
+UPCIDs = Left(UPCIDs, Len(UPCIDs) - 2)
+
+Me.List2.RowSourceType = "Value List"
+
+Me.List2.RowSource = UPCIDs
+
+Me.Refresh
+
 End Sub

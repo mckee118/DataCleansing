@@ -10,7 +10,7 @@ PublishOption =1
     Width =11565
     DatasheetFontHeight =11
     ItemSuffix =18
-    Right =16665
+    Right =12030
     Bottom =7890
     DatasheetGridlinesColor =14806254
         0x87b0563c9b51e440
@@ -382,10 +382,10 @@ Option Compare Database
 
 Public Sub ChangePTStatement(p_QueryName As String, p_sql As String)
 'for changing pass-through's in this db
-    Dim qdef As dao.QueryDef
+    Dim qdef As DAO.QueryDef
  
     Set qdef = CurrentDb.QueryDefs(p_QueryName)
-    qdef.SQL = p_sql
+    qdef.sql = p_sql
     qdef.Close
     Set qdef = Nothing
  
@@ -421,12 +421,13 @@ Private Sub Command1_Click()
           
        Forms!selectUPCIDs!Text7.Value = "create"
        
-       strSQL = "SELECT COLUMN_NAME FROM [INFORMATION_SCHEMA].COLUMNS WHERE COLUMN_NAME LIKE 'upcid%' AND TABLE_NAME = '" & strTable & "'"
+       Forms!selectUPCIDs!List0.RowSourceType = "Table/Query"
        
+       strSQL = "SELECT COLUMN_NAME FROM [INFORMATION_SCHEMA].COLUMNS WHERE COLUMN_NAME LIKE 'upcid%' AND TABLE_NAME = '" & strTable & "'"
+
        'call the pass through function
        ChangePTStatement "getUPCIDColumns", strSQL
-       
-       Forms!selectUPCIDs.Refresh
+
        'Me.Command1.Enabled = False
              
     Exit Sub
