@@ -10,7 +10,7 @@ PublishOption =1
     Width =11565
     DatasheetFontHeight =11
     ItemSuffix =18
-    Right =12030
+    Right =16665
     Bottom =7890
     DatasheetGridlinesColor =14806254
         0x87b0563c9b51e440
@@ -417,17 +417,17 @@ Private Sub Command1_Click()
        
        strTable = Combo8.Value 'set this to the value in dropdown list
           
-       DoCmd.OpenForm "selectUPCIDs"
-          
-       Forms!selectUPCIDs!Text7.Value = "create"
-       
-       Forms!selectUPCIDs!List0.RowSourceType = "Table/Query"
+       'Forms!selectUPCIDs!List0.RowSourceType = "Table/Query"
        
        strSQL = "SELECT COLUMN_NAME FROM [INFORMATION_SCHEMA].COLUMNS WHERE COLUMN_NAME LIKE 'upcid%' AND TABLE_NAME = '" & strTable & "'"
 
        'call the pass through function
        ChangePTStatement "getUPCIDColumns", strSQL
 
+       DoCmd.OpenForm "selectUPCIDs"
+          
+       Forms!selectUPCIDs!Text7.Value = "create"
+       
        'Me.Command1.Enabled = False
              
     Exit Sub

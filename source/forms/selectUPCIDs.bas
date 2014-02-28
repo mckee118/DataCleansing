@@ -13,11 +13,11 @@ PublishOption =1
     GridY =10
     Width =8674
     DatasheetFontHeight =11
-    ItemSuffix =9
+    ItemSuffix =10
     Left =3825
     Top =2415
-    Right =15600
-    Bottom =10335
+    Right =12750
+    Bottom =8355
     DatasheetGridlinesColor =14806254
         0xa9f965aa9b59e440
     End
@@ -123,6 +123,7 @@ PublishOption =1
             AlternateBackThemeColorIndex =1
             AlternateBackShade =95.0
             BackThemeColorIndex =1
+                    RowSourceTypeInt =1
                     OverlapFlags =85
                     IMESentenceMode =3
                     Left =396
@@ -132,8 +133,7 @@ PublishOption =1
                     ForeColor =4210752
                     BorderColor =10921638
                     Name ="List0"
-                    RowSourceType ="Table/Query"
-                    RowSource ="getMatchKeysColumnNotPresent"
+                    RowSourceType ="Value List"
                     GridlineColor =10921638
                     AllowValueListEdits =0
 
@@ -142,6 +142,7 @@ PublishOption =1
                     LayoutCachedWidth =3401
                     LayoutCachedHeight =5102
                 End
+                    RowSourceTypeInt =1
                     OverlapFlags =85
                     MultiSelect =1
                     IMESentenceMode =3
@@ -153,8 +154,7 @@ PublishOption =1
                     ForeColor =4210752
                     BorderColor =10921638
                     Name ="List2"
-                    RowSourceType ="Table/Query"
-                    RowSource ="getMatchKeysColumnPresent"
+                    RowSourceType ="Value List"
                     GridlineColor =10921638
                     AllowValueListEdits =0
 
@@ -339,6 +339,7 @@ Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Compare Database
+Public UPCIDsExisting As String
 Public UPCIDs As String
 
 Private Sub Command4_Click()
@@ -346,6 +347,7 @@ Private Sub Command4_Click()
 For i = 0 To List0.ListCount - 1
     If List0.Selected(i) Then
         List2.AddItem List0.Column(0)
+        List0.RemoveItem List0.Column(0)
     End If
 Next i
 
@@ -355,6 +357,7 @@ Private Sub Command5_Click()
 
 For i = 0 To List2.ListCount - 1
     If List2.Selected(i) Then
+        List0.AddItem List2.Column(0)
         List2.RemoveItem List2.Column(0)
     End If
 Next i
@@ -365,19 +368,19 @@ Private Sub Command6_Click()
 
 Dim strSQL As String
 Dim strTable As String
-Dim UPCIDs As String
+Dim UPCIDsExisting As String
 
 strTable = Forms!FrontPage!Combo8.Value
 
-UPCIDs = Replace(List2.RowSource, ";", ", ")
+UPCIDsExisting = Replace(List2.RowSource, ";", ", ")
 
-'MsgBox UPCIDs
+'MsgBox UPCIDsExisting
 
 List2.RowSource = ""
 
 If Text7.Value = "create" Then
        Dim sqlUPCIDs As String
-       sqlUPCIDs = Replace(UPCIDs, ", ", " varchar(128), ")
+       sqlUPCIDs = Replace(UPCIDsExisting, ", ", " varchar(128), ")
        sqlUPCIDs = sqlUPCIDs & " varchar(128)"
        strSQL = "ALTER TABLE "
        strSQL = strSQL & strTable
@@ -435,23 +438,42 @@ Private Sub Form_Open(Cancel As Integer)
 Dim RS As DAO.Recordset
 Dim sql As String
 
+UPCIDsExisting = ""
 UPCIDs = ""
        
 sql = "select MatchKeys from getMatchKeysColumnPresent"
        
 Set RS = CurrentDb.OpenRecordset(sql)
 Do While Not RS.EOF
-   UPCIDs = UPCIDs & RS("MatchKeys") & ", "
+   UPCIDsExisting = UPCIDsExisting & RS("MatchKeys") & ", "
    RS.MoveNext
 Loop
 RS.Close
 Set RS = Nothing
-UPCIDs = Left(UPCIDs, Len(UPCIDs) - 2)
+sql = ""
+
+sql = "select MatchKeys from getMatchKeysColumnNotPresent"
+
+Set RS = CurrentDb.OpenRecordset(sql)
+Do While Not RS.EOF
+    UPCIDs = UPCIDs & RS("MatchKeys") & ", "
+    RS.MoveNext
+Loop
+RS.Close
+Set RS = Nothing
+
+If UPCIDsExisting <> "" Then
+    UPCIDsExisting = Left(UPCIDsExisting, Len(UPCIDsExisting) - 2)
+End If
+
+If UPCIDs <> "" Then
+    UPCIDs = Left(UPCIDs, Len(UPCIDs) - 2)
+End If
 
 Me.List2.RowSourceType = "Value List"
+Me.List0.RowSourceType = "Value List"
 
-Me.List2.RowSource = UPCIDs
-
-Me.Refresh
+Me.List2.RowSource = UPCIDsExisting
+Me.List0.RowSource = UPCIDs
 
 End Sub
