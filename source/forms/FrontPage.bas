@@ -10,7 +10,7 @@ PublishOption =1
     Width =11565
     DatasheetFontHeight =11
     ItemSuffix =18
-    Right =16665
+    Right =12030
     Bottom =7890
     DatasheetGridlinesColor =14806254
         0x87b0563c9b51e440
@@ -411,7 +411,6 @@ End Sub
 
 Private Sub Command1_Click()
     On Error GoTo ErrorHandler:
-
        Dim strSQL As String
        Dim strTable As String
        
@@ -425,7 +424,7 @@ Private Sub Command1_Click()
        ChangePTStatement "getUPCIDColumns", strSQL
 
        DoCmd.OpenForm "selectUPCIDs"
-          
+
        Forms!selectUPCIDs!Text7.Value = "create"
        
        'Me.Command1.Enabled = False

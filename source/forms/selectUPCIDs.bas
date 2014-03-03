@@ -16,8 +16,8 @@ PublishOption =1
     ItemSuffix =10
     Left =3825
     Top =2415
-    Right =12750
-    Bottom =8355
+    Right =15600
+    Bottom =10335
     DatasheetGridlinesColor =14806254
         0xa9f965aa9b59e440
     End
@@ -144,7 +144,6 @@ PublishOption =1
                 End
                     RowSourceTypeInt =1
                     OverlapFlags =85
-                    MultiSelect =1
                     IMESentenceMode =3
                     Left =5331
                     Top =735
@@ -351,6 +350,8 @@ For i = 0 To List0.ListCount - 1
     End If
 Next i
 
+Me.List0.Selected(0) = True
+
 End Sub
 
 Private Sub Command5_Click()
@@ -362,13 +363,15 @@ For i = 0 To List2.ListCount - 1
     End If
 Next i
 
+Me.List2.Selected(0) = True
+
 End Sub
 
 Private Sub Command6_Click()
 
 Dim strSQL As String
 Dim strTable As String
-Dim UPCIDsExisting As String
+                                Dim UPCIDsExisting As String
 
 strTable = Forms!FrontPage!Combo8.Value
 
@@ -386,7 +389,7 @@ If Text7.Value = "create" Then
        strSQL = strSQL & strTable
        strSQL = strSQL & " ADD " & sqlUPCIDs & ", UPRN varchar(128)"
        'added more UPCID's
-       
+
        'call the pass through function
        ChangePTStatement "createUPCIDsAddress", strSQL
        
