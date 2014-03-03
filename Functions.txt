@@ -1,0 +1,2 @@
+starttime = Timer **this goes at the start of the code and sets the time the code starts at
+MsgBox Timer - starttime ** this goes at the end of the code and returns the length it took
