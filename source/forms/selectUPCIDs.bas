@@ -16,8 +16,8 @@ PublishOption =1
     ItemSuffix =10
     Left =3825
     Top =2415
-    Right =15600
-    Bottom =10335
+    Right =12750
+    Bottom =8355
     DatasheetGridlinesColor =14806254
         0xa9f965aa9b59e440
     End
@@ -371,23 +371,49 @@ Private Sub Command6_Click()
 
 Dim strSQL As String
 Dim strTable As String
-                                Dim UPCIDsExisting As String
+Dim UPCIDsSplit() As String
+Dim ListBoxUPCIDs() As String
 
 strTable = Forms!FrontPage!Combo8.Value
 
-UPCIDsExisting = Replace(List2.RowSource, ";", ", ")
+UPCIDsSplit() = Split(UPCIDsExisting, ", ")
 
-'MsgBox UPCIDsExisting
+ListBoxUPCIDs() = Split(Replace(List2.RowSource, ";", ", "), ", ")
+
+Dim i As Long
+Dim j As Long
+Dim wanted As String
+
+For i = LBound(ListBoxUPCIDs) To UBound(ListBoxUPCIDs)
+    For j = LBound(UPCIDsSplit) To UBound(UPCIDsSplit)
+        If ListBoxUPCIDs(i) = UPCIDsSplit(j) Then
+            ListBoxUPCIDs(i) = "@"
+        End If
+    Next j
+Next i
+
+wanted = Join(ListBoxUPCIDs, ", ")
+
+wanted = Replace(wanted, "@, ", "")
+
+wanted = Replace(wanted, "@", "")
+
+MsgBox wanted
 
 List2.RowSource = ""
 
 If Text7.Value = "create" Then
        Dim sqlUPCIDs As String
-       sqlUPCIDs = Replace(UPCIDsExisting, ", ", " varchar(128), ")
-       sqlUPCIDs = sqlUPCIDs & " varchar(128)"
+       sqlUPCIDs = Replace(wanted, ", ", " varchar(128), ")
+       If wanted <> "" Then
+            sqlUPCIDs = sqlUPCIDs & " varchar(128)"
+       End If
        strSQL = "ALTER TABLE "
        strSQL = strSQL & strTable
-       strSQL = strSQL & " ADD " & sqlUPCIDs & ", UPRN varchar(128)"
+       If wanted <> "" Then
+            strSQL = strSQL & " ADD " & sqlUPCIDs & ", UPRN varchar(128)"
+       Else: strSQL = strSQL & " ADD " & sqlUPCIDs & "UPRN varchar(128)"
+       End If
        'added more UPCID's
 
        'call the pass through function

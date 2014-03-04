@@ -1,5 +1,3 @@
-**List box fixed 
-
 add add more list boxes
 
 Limit UPCID matches to > 3 characters
