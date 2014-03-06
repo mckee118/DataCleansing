@@ -1,3 +1,5 @@
+***loading screen on splash screen, maybe reduce to 3 seconds
+
 add add more list boxes
 
 Limit UPCID matches to > 3 characters
