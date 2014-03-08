@@ -1,4 +1,4 @@
-***loading screen on splash screen, maybe reduce to 3 seconds
+**added fallback that if uprn is already in table then dont add it
 
 add add more list boxes
 
@@ -7,5 +7,3 @@ Limit UPCID matches to > 3 characters
 Buttons for Address data not enabled untill check for UPCIDS are done.
 
 Same for POINTER
-
-^^^ Need POP up box to let user know what UPCIDs are already there and if they have data in it.

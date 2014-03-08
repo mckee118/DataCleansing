@@ -2,7 +2,7 @@
 PublishOption =1
 ColumnsShown =0
     Action ="RunCode"
-    Argument ="SplashStart(\"SplashScreen\", 5)"
+    Argument ="SplashStart(\"SplashScreen\", 3)"
 End
     Action ="RunCode"
     Argument ="SplashEnd()"
@@ -21,7 +21,7 @@ End
         "hemas.microsoft.com/office/acc"
 End
     Comment ="_AXL:essservices/2009/11/forms\"><Statements><Action Name=\"RunCode\"><Argument "
-        "Name=\"FunctionName\">SplashStart(\"SplashScreen\", 5)</Argument></Action><Actio"
+        "Name=\"FunctionName\">SplashStart(\"SplashScreen\", 3)</Argument></Action><Actio"
         "n Name=\"RunCode\"><Argument Name=\"FunctionName\">SplashEnd()</Argument></Actio"
         "n><Action Name=\"OpenForm"
 End

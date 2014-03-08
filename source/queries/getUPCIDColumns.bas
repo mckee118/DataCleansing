@@ -13,4 +13,7 @@ dbBoolean "LogMessages" ="0"
         dbText "Name" ="COLUMN_NAME"
         dbLong "AggregateType" ="-1"
     End
+        dbText "Name" ="1.COLUMN_NAME"
+        dbLong "AggregateType" ="-1"
+    End
 End

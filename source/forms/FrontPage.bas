@@ -10,7 +10,7 @@ PublishOption =1
     Width =11565
     DatasheetFontHeight =11
     ItemSuffix =18
-    Right =12030
+    Right =16800
     Bottom =7890
     DatasheetGridlinesColor =14806254
         0x87b0563c9b51e440
@@ -308,7 +308,7 @@ PublishOption =1
                     IMESentenceMode =3
                     Left =3345
                     Top =1247
-                    Width =2380
+                    Width =2320
                     Height =315
                     TabIndex =4
                     BorderColor =10921638
@@ -322,7 +322,7 @@ PublishOption =1
 
                     LayoutCachedLeft =3345
                     LayoutCachedTop =1247
-                    LayoutCachedWidth =5725
+                    LayoutCachedWidth =5665
                     LayoutCachedHeight =1562
                 End
                     OverlapFlags =85

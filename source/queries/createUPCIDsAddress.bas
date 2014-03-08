@@ -1,4 +1,4 @@
-﻿dbMemo "SQL" ="ALTER TABLE S_Address ADD UPRN varchar(128)"
+﻿dbMemo "SQL" ="ALTER TABLE S_Address ADD UPCID_N_NP varchar(128)"
 dbMemo "Connect" ="ODBC;DSN=address;DATABASE=Address"
 dbBoolean "ReturnsRecords" ="0"
 dbInteger "ODBCTimeout" ="60"

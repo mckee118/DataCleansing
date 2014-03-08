@@ -373,12 +373,21 @@ Dim strSQL As String
 Dim strTable As String
 Dim UPCIDsSplit() As String
 Dim ListBoxUPCIDs() As String
+Dim hasUPRN As String
 
 strTable = Forms!FrontPage!Combo8.Value
 
 UPCIDsSplit() = Split(UPCIDsExisting, ", ")
 
 ListBoxUPCIDs() = Split(Replace(List2.RowSource, ";", ", "), ", ")
+
+strSQL = "SELECT COLUMN_NAME FROM [INFORMATION_SCHEMA].COLUMNS WHERE COLUMN_NAME = 'uprn' AND TABLE_NAME = '" & strTable & "'"
+
+ChangePTStatement "getUPRNColumn", strSQL
+
+strSQL = ""
+
+hasUPRN = DLookup("COLUMN_NAME", "getUPRNColumn")
 
 Dim i As Long
 Dim j As Long
@@ -398,8 +407,6 @@ wanted = Replace(wanted, "@, ", "")
 
 wanted = Replace(wanted, "@", "")
 
-MsgBox wanted
-
 List2.RowSource = ""
 
 If Text7.Value = "create" Then
@@ -408,21 +415,42 @@ If Text7.Value = "create" Then
        If wanted <> "" Then
             sqlUPCIDs = sqlUPCIDs & " varchar(128)"
        End If
-       strSQL = "ALTER TABLE "
-       strSQL = strSQL & strTable
+       'strSQL = "ALTER TABLE "
+       'strSQL = strSQL & strTable
        If wanted <> "" Then
-            strSQL = strSQL & " ADD " & sqlUPCIDs & ", UPRN varchar(128)"
-       Else: strSQL = strSQL & " ADD " & sqlUPCIDs & "UPRN varchar(128)"
+          If hasUPRN = "" Then
+             strSQL = "ALTER TABLE "
+             strSQL = strSQL & strTable
+             strSQL = strSQL & " ADD " & sqlUPCIDs & ", UPRN varchar(128)"
+          Else
+             strSQL = "ALTER TABLE "
+             strSQL = strSQL & strTable
+             strSQL = strSQL & " ADD " & sqlUPCIDs
+             
+             ChangePTStatement "createUPCIDsAddress", strSQL
+       
+             DoCmd.SetWarnings (False)
+             DoCmd.OpenQuery ("createUPCIDsAddress")
+             MsgBox "Columns Created", vbOKOnly, "Complete!"
+             DoCmd.SetWarnings (True)
+                          
+          End If
+       'Else
+          'If hasUPRN = "" Then
+             'strSQL = strSQL & " ADD " & sqlUPCIDs & "UPRN varchar(128)"
+          'Else
+             'strSQL = strSQL & " ADD " & sqlUPCIDs
+          'End If
        End If
        'added more UPCID's
 
        'call the pass through function
-       ChangePTStatement "createUPCIDsAddress", strSQL
+       'ChangePTStatement "createUPCIDsAddress", strSQL
        
-       DoCmd.SetWarnings (False)
-       DoCmd.OpenQuery ("createUPCIDsAddress")
-       MsgBox "Columns Created", vbOKOnly, "Complete!"
-       DoCmd.SetWarnings (True)
+       'DoCmd.SetWarnings (False)
+       'DoCmd.OpenQuery ("createUPCIDsAddress")
+       'MsgBox "Columns Created", vbOKOnly, "Complete!"
+       'DoCmd.SetWarnings (True)
 ElseIf Text7.Value = "add" Then
        strSQLDefault = "Update " & strTable
        strSQL = strSQLDefault & " set upcid_n_wp = REPLACE(DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers') + ISNULL(POSTCODE, ''), ' ', '')"
