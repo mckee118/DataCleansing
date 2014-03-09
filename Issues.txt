@@ -1,4 +1,4 @@
-**added fallback that if uprn is already in table then dont add it
+**need to add remove function when create button is clicked on selectUPCID form
 
 add add more list boxes
 
