@@ -373,6 +373,7 @@ Dim strSQL As String
 Dim strTable As String
 Dim UPCIDsSplit() As String
 Dim ListBoxUPCIDs() As String
+Dim UnwantedListBoxUPCIDs() As String
 Dim hasUPRN As String
 
 strTable = Forms!FrontPage!Combo8.Value
@@ -380,6 +381,8 @@ strTable = Forms!FrontPage!Combo8.Value
 UPCIDsSplit() = Split(UPCIDsExisting, ", ")
 
 ListBoxUPCIDs() = Split(Replace(List2.RowSource, ";", ", "), ", ")
+
+UnwantedListBoxUPCIDs() = Split(Replace(List0.RowSource, ";", ", "), ", ")
 
 strSQL = "SELECT COLUMN_NAME FROM [INFORMATION_SCHEMA].COLUMNS WHERE COLUMN_NAME = 'uprn' AND TABLE_NAME = '" & strTable & "'"
 
@@ -389,10 +392,10 @@ strSQL = ""
 
 hasUPRN = Nz(DLookup("COLUMN_NAME", "getUPRNColumn"), "none")
 
-MsgBox hasUPRN
 Dim i As Long
 Dim j As Long
 Dim wanted As String
+Dim unwanted As String
 
 For i = LBound(ListBoxUPCIDs) To UBound(ListBoxUPCIDs)
     For j = LBound(UPCIDsSplit) To UBound(UPCIDsSplit)
@@ -401,6 +404,16 @@ For i = LBound(ListBoxUPCIDs) To UBound(ListBoxUPCIDs)
         End If
     Next j
 Next i
+
+'For i = LBound(UnwantedListBoxUPCIDs) To UBound(UnwantedListBoxUPCIDs)
+'    For j = LBound(UPCIDsSplit) To UBound(UPCIDsSplit)
+'        If UnwantedListBoxUPCIDs(i) <> UPCIDsSplit(j) Then
+'
+'        End If
+'    Next j
+'Next i
+
+'MsgBox unwanted
 
 wanted = Join(ListBoxUPCIDs, ", ")
 
