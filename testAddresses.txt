@@ -1,0 +1,195 @@
+address1$address2$address3$address4$address5$postcode$datasourceid
+11a Corbally Road$Downpatrick$Ballylucas$$$BT30 8TD$7
+44 Coniamstown Road$Downpatrick$$$$BT30 8BE$7
+44 Coniamstown Road$Downpatrick$$$$BT30 8BE$7
+2 Crew Hill Gardens$Downpatrick$Ardglass$$$BT30 7XD$7
+4 Castle Downs$Downpatrick$Kilclief$$$BT30 6AU$7
+7 Kerry Drive$Downpatrick$Killyleagh$$$BT30 9RL$7
+5a Killard Drive$Downpatrick$Ballyhornan$$$BT30 7PN$7
+35 Crew Road$Downpatrick$Ardglass$$$BT30 7UN$7
+1 Kilclief Road$Downpatrick$Kilclief$$$BT30 7PA$7
+33 Osborne Drive$Killyleagh$Shrigley$$$BT30 9SG$7
+16 Bath Street$Downpatrick$Ardglass$$$BT30 7SE$7
+59 Seaview$Downpatrick$Killough$$$BT30 7PT$7
+89 Moneyscalp Road$Newcastle$Bryansford$$$BT33 0PY$7
+1 Ballyhosset Road$Downpatrick$$$$BT30 7EF$7
+10 Struell Road$Downpatrick$$$$BT30 6JR$7
+2 Station Road$Downpatrick$Killough$$$BT30 7QA$7
+25 Frederick Street$Downpatrick$Killyleagh$$$BT30 9QP$7
+29 Downpatrick Road$Downpatrick$Ardglass$$$BT30 7UW$7
+28 Hill Street$Downpatrick$Ardglass$$$BT30 7TX$7
+56 Cathedral View$Downpatrick$$$$BT30 6DL$7
+8 St Tassach's Terrace$Downpatrick$Raholp$$$BT30 7JL$7
+12 Ross Road$Downpatrick$Ardglass$$$BT30 7TG$7
+15 Edward Street$Downpatrick$$$$BT30 6JD$7
+14 Bishops Brae Avenue$Downpatrick$$$$BT30 6TG$7
+22a Wateresk Road$Newcastle$Dundrum$$$BT33 0NL$7
+3 Clanmaghery Court$Downpatrick$Ballykinlar$$$BT30 8EZ$7
+96 Stream Street$Downpatrick$$$$BT30 6DF$7
+14 Glebe Road,$Downpatrick$Kilclief$$$BT30 7AW$7
+16 Crewhill Gardens$Ardglass$$$$BT30 7XD$7
+26 Ardilea Close$Downpatrick$$$$BT30 6GY$7
+27 Crew Hill Court$Downpatrick$Ardglass$$$BT30 7US$7
+33 Myra Road$DOWNPATRICK$$$$BT30 7JX$7
+15 Lisoid Road$Downpatrick$$$$BT30 8LP$7
+4 Glennor Crescent East$Belfast$Carryduff$$$BT8 8JE$7
+17 Bridge Street$Downpatrick$$$$BT30 6HE$7
+26 Glebetown Drive$Downpatrick$$$$BT30 6QB$7
+4 St Annes Close$Downpatrick$Killough$$$BT30 7RP$7
+99 Pegasus Walk$Downpatrick$$$$BT30 6QL$7
+21 Minerstown Road$Downpatrick$$$$BT30 8LR$7
+31 Meadow Court$Downpatrick$Ardglass$$$BT30 7TS$7
+29 Ballymote Walk$Downpatrick$$$$BT30 6PS$7
+1 Plantation Park$Downpatrick$$$$BT30 6UX$7
+19 Corbally Road$Downpatrick$$$$BT30 8TD$7
+60 Ardglass Road$Downpatrick$Kilclief$$$BT30 7PF$7
+11 Drumaness Walk$Downpatrick$$$$BT30 6QQ$7
+60 Ardglass Road$Downpatrick$Kilclief$$$BT30 7PF$7
+7 Kildares Court$Downpatrick$Ardglass$$$BT30 7TW$7
+12 St Tassachs Terrace$Downpatrick$$$$BT30 7JL$7
+59 Meadowlands$Downpatrick$$$$BT30 6EN$7
+2 Grangecam Road$Downpatrick$$$$BT30 8BB$7
+13 Lynn Doyle Place$Downpatrick$$$$BT30 6BZ$7
+11 Joe Tomelty Drive$Portaferry$$$$BT22 1RP$7
+63 Belfast Road$Ballynahinch$$$$BT24 8EB$7
+3 Ross Road$Downpatrick$Ardglass$$$BT30 7TG$7
+5 Racecourse Close$Downpatrick$$$$BT30 6US$7
+12 Struell Avenue$Downpatrick$$$$BT30 6GP$7
+14 Meadow Court$Downpatrick$Ardglass$$$BT30 7TS$7
+2 Castle Court$Downpatrick$Killough$$$BT30 7RH$7
+21 Highbury Avenue$Killyleagh$$$$BT30 9RE$7
+31 Strangford Road$DOWNPATRICK$$$$BT30 6SL$7
+57 Ballymote Walk$Downpatrick$$$$BT30 6PS$7
+28 Ardfern Road$Downpatrick$$$$BT30 6TW$7
+62 Minerstown Road$Downpatrick$$$$BT30 8LS$7
+2 Vianstown Park$Downpatrick$$$$BT30 6DH$7
+110 Crew Road$Downpatrick$Ardglass$$$BT30 7HA$7
+4 Drumhill Heights$Castlewellan$Drumaroad$$$BT31 9PJ$7
+5 Drumcloon Walk$Downpatrick$$$$BT30 6HF$7
+127a Shore Road$Strangford$Kilclief$$$BT30 7NP$7
+26 Marian Park$Downpatrick$$$$BT30 6NW$7
+4 Cariff Court, Bishops Court Road$Downpatrick$Kilclief$$$BT30 7HU$7
+55 Glebetown Drive$Downpatrick$$$$BT30 6PZ$7
+142 Drumaness Road$Ballynahinch$$$$BT24 8RL$7
+18 Ardfern Close$Downpatrick$Saul Road$$$BT30 6TY$7
+11 Rathcuan Heights$Downpatrick$$$$BT30 6XD$7
+4 Bishops Brae Avenue$Downpatrick$$$$BT30 6TG$7
+14 Saul Mills Road$Downpatrick$$$$BT30 7JE$7
+2 Drumderg Park$Downpatrick$$$$BT30 6NU$7
+26 Ardfern Road$Downpatrick$$$$BT30 6TW$7
+12 St Dympnas Avenue$Downpatrick$$$$BT30 6EG$7
+118 Ballynoe Rd$Downpatrick$$$$BT30 8AR$7
+14c Newcastle Road$Castlewellan$$$$BT31 9DP$7
+24 Ballyedock Road$Downpatrick$Ardglass$$$BT30 7TB$7
+45 Vianstown Heights$Downpatrick$$$$BT30 6TF$7
+19 Fountain Court$Downpatrick$$$$BT30 6HT$7
+137 Ballyduggan Road$Downpatrick$$$$BT30 8HG$7
+90 Newcastle Road$Castlewellan$$$$BT31 9DT$7
+17 Edward Street$Downpatrick$$$$BT30 6JD$7
+63 Killard Road$Downpatrick$Ballyhornan$$$BT30 7PQ$7
+92 Churchtown Road$Downpatrick$Ballyculter$$$BT30 7AN$7
+4 Struell Park$Downpatrick$$$$BT30 6HR$7
+44 Bishopscourt Road$Downpatrick$Kilclief$$$BT30 7PB$7
+74c Lisoid Road$Downpatrick$$$$BT30 8AX$7
+150a Vianstown Road$Downpatrick$$$$BT30 6DA$7
+33 Lissoid Road$Downpatrick$Rossglass$$$BT30 8LP$7
+20b Station Road$Downpatrick$Killough$$$BT30 7QA$7
+64 Scotch Street$Downpatrick$$$$BT30 6AN$7
+1 Struell Avenue$Downpatrick$$$$BT30 6GP$7
+11a Corbally Road$Downpatrick$Ballylucas$$$BT30 8TD$7
+44 Coniamstown Road$Downpatrick$$$$BT30 8BE$7
+44 Coniamstown Road$Downpatrick$$$$BT30 8BE$7
+2 Crew Hill Gardens$Downpatrick$Ardglass$$$BT30 7XD$7
+4 Castle Downs$Downpatrick$Kilclief$$$BT30 6AU$7
+7 Kerry Drive$Downpatrick$Killyleagh$$$BT30 9RL$7
+5a Killard Drive$Downpatrick$Ballyhornan$$$BT30 7PN$7
+35 Crew Road$Downpatrick$Ardglass$$$BT30 7UN$7
+1 Kilclief Road$Downpatrick$Kilclief$$$BT30 7PA$7
+33 Osborne Drive$Killyleagh$Shrigley$$$BT30 9SG$7
+16 Bath Street$Downpatrick$Ardglass$$$BT30 7SE$7
+59 Seaview$Downpatrick$Killough$$$BT30 7PT$7
+89 Moneyscalp Road$Newcastle$Bryansford$$$BT33 0PY$7
+1 Ballyhosset Road$Downpatrick$$$$BT30 7EF$7
+10 Struell Road$Downpatrick$$$$BT30 6JR$7
+2 Station Road$Downpatrick$Killough$$$BT30 7QA$7
+25 Frederick Street$Downpatrick$Killyleagh$$$BT30 9QP$7
+29 Downpatrick Road$Downpatrick$Ardglass$$$BT30 7UW$7
+28 Hill Street$Downpatrick$Ardglass$$$BT30 7TX$7
+56 Cathedral View$Downpatrick$$$$BT30 6DL$7
+8 St Tassach's Terrace$Downpatrick$Raholp$$$BT30 7JL$7
+12 Ross Road$Downpatrick$Ardglass$$$BT30 7TG$7
+15 Edward Street$Downpatrick$$$$BT30 6JD$7
+14 Bishops Brae Avenue$Downpatrick$$$$BT30 6TG$7
+22a Wateresk Road$Newcastle$Dundrum$$$BT33 0NL$7
+3 Clanmaghery Court$Downpatrick$Ballykinlar$$$BT30 8EZ$7
+96 Stream Street$Downpatrick$$$$BT30 6DF$7
+14 Glebe Road,$Downpatrick$Kilclief$$$BT30 7AW$7
+16 Crewhill Gardens$Ardglass$$$$BT30 7XD$7
+26 Ardilea Close$Downpatrick$$$$BT30 6GY$7
+27 Crew Hill Court$Downpatrick$Ardglass$$$BT30 7US$7
+33 Myra Road$DOWNPATRICK$$$$BT30 7JX$7
+15 Lisoid Road$Downpatrick$$$$BT30 8LP$7
+4 Glennor Crescent East$Belfast$Carryduff$$$BT8 8JE$7
+17 Bridge Street$Downpatrick$$$$BT30 6HE$7
+26 Glebetown Drive$Downpatrick$$$$BT30 6QB$7
+4 St Annes Close$Downpatrick$Killough$$$BT30 7RP$7
+99 Pegasus Walk$Downpatrick$$$$BT30 6QL$7
+21 Minerstown Road$Downpatrick$$$$BT30 8LR$7
+31 Meadow Court$Downpatrick$Ardglass$$$BT30 7TS$7
+29 Ballymote Walk$Downpatrick$$$$BT30 6PS$7
+1 Plantation Park$Downpatrick$$$$BT30 6UX$7
+19 Corbally Road$Downpatrick$$$$BT30 8TD$7
+60 Ardglass Road$Downpatrick$Kilclief$$$BT30 7PF$7
+11 Drumaness Walk$Downpatrick$$$$BT30 6QQ$7
+60 Ardglass Road$Downpatrick$Kilclief$$$BT30 7PF$7
+7 Kildares Court$Downpatrick$Ardglass$$$BT30 7TW$7
+12 St Tassachs Terrace$Downpatrick$$$$BT30 7JL$7
+59 Meadowlands$Downpatrick$$$$BT30 6EN$7
+2 Grangecam Road$Downpatrick$$$$BT30 8BB$7
+13 Lynn Doyle Place$Downpatrick$$$$BT30 6BZ$7
+11 Joe Tomelty Drive$Portaferry$$$$BT22 1RP$7
+63 Belfast Road$Ballynahinch$$$$BT24 8EB$7
+3 Ross Road$Downpatrick$Ardglass$$$BT30 7TG$7
+5 Racecourse Close$Downpatrick$$$$BT30 6US$7
+12 Struell Avenue$Downpatrick$$$$BT30 6GP$7
+14 Meadow Court$Downpatrick$Ardglass$$$BT30 7TS$7
+2 Castle Court$Downpatrick$Killough$$$BT30 7RH$7
+21 Highbury Avenue$Killyleagh$$$$BT30 9RE$7
+31 Strangford Road$DOWNPATRICK$$$$BT30 6SL$7
+57 Ballymote Walk$Downpatrick$$$$BT30 6PS$7
+28 Ardfern Road$Downpatrick$$$$BT30 6TW$7
+62 Minerstown Road$Downpatrick$$$$BT30 8LS$7
+2 Vianstown Park$Downpatrick$$$$BT30 6DH$7
+110 Crew Road$Downpatrick$Ardglass$$$BT30 7HA$7
+4 Drumhill Heights$Castlewellan$Drumaroad$$$BT31 9PJ$7
+5 Drumcloon Walk$Downpatrick$$$$BT30 6HF$7
+127a Shore Road$Strangford$Kilclief$$$BT30 7NP$7
+26 Marian Park$Downpatrick$$$$BT30 6NW$7
+4 Cariff Court, Bishops Court Road$Downpatrick$Kilclief$$$BT30 7HU$7
+55 Glebetown Drive$Downpatrick$$$$BT30 6PZ$7
+142 Drumaness Road$Ballynahinch$$$$BT24 8RL$7
+18 Ardfern Close$Downpatrick$Saul Road$$$BT30 6TY$7
+11 Rathcuan Heights$Downpatrick$$$$BT30 6XD$7
+4 Bishops Brae Avenue$Downpatrick$$$$BT30 6TG$7
+14 Saul Mills Road$Downpatrick$$$$BT30 7JE$7
+2 Drumderg Park$Downpatrick$$$$BT30 6NU$7
+26 Ardfern Road$Downpatrick$$$$BT30 6TW$7
+12 St Dympnas Avenue$Downpatrick$$$$BT30 6EG$7
+118 Ballynoe Rd$Downpatrick$$$$BT30 8AR$7
+14c Newcastle Road$Castlewellan$$$$BT31 9DP$7
+24 Ballyedock Road$Downpatrick$Ardglass$$$BT30 7TB$7
+45 Vianstown Heights$Downpatrick$$$$BT30 6TF$7
+19 Fountain Court$Downpatrick$$$$BT30 6HT$7
+137 Ballyduggan Road$Downpatrick$$$$BT30 8HG$7
+90 Newcastle Road$Castlewellan$$$$BT31 9DT$7
+17 Edward Street$Downpatrick$$$$BT30 6JD$7
+63 Killard Road$Downpatrick$Ballyhornan$$$BT30 7PQ$7
+92 Churchtown Road$Downpatrick$Ballyculter$$$BT30 7AN$7
+4 Struell Park$Downpatrick$$$$BT30 6HR$7
+44 Bishopscourt Road$Downpatrick$Kilclief$$$BT30 7PB$7
+74c Lisoid Road$Downpatrick$$$$BT30 8AX$7
+150a Vianstown Road$Downpatrick$$$$BT30 6DA$7
+33 Lissoid Road$Downpatrick$Rossglass$$$BT30 8LP$7
+20b Station Road$Downpatrick$Killough$$$BT30 7QA$7
+64 Scotch Street$Downpatrick$$$$BT30 6AN$7
+1 Struell Avenue$Downpatrick$$$$BT30 6GP$7
