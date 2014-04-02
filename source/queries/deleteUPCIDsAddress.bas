@@ -1,4 +1,4 @@
-﻿dbMemo "SQL" ="ALTER TABLE S_Address ADD UPCID_N_WP varchar(128)"
+﻿dbMemo "SQL" ="ALTER TABLE S_Address DROP COLUMN UPCID_N_NP"
 dbMemo "Connect" ="ODBC;DSN=address;DATABASE=Address"
 dbBoolean "ReturnsRecords" ="0"
 dbInteger "ODBCTimeout" ="60"

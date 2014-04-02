@@ -10,8 +10,8 @@ PublishOption =1
     Width =11565
     DatasheetFontHeight =11
     ItemSuffix =18
-    Right =16800
-    Bottom =7890
+    Right =12105
+    Bottom =7140
     DatasheetGridlinesColor =14806254
         0x87b0563c9b51e440
     End
@@ -427,8 +427,7 @@ Private Sub Command1_Click()
 
        Forms!selectUPCIDs!Text7.Value = "create"
        
-       'Me.Command1.Enabled = False
-             
+           
     Exit Sub
 ErrorHandler:
     MsgBox "An error occured -  error  " & Err.Number & ": " & Err.Description
@@ -485,11 +484,10 @@ Private Sub Command4_Click()
        
        DoCmd.OpenForm "selectUPCIDs"
           
-       Forms!selectUPCIDs!List0.RowSourceType = "Table/Query"
-       Forms!selectUPCIDs!List0.RowSource = "getUPCIDColumns"
-       
        Forms!selectUPCIDs!Text7.Value = "add"
        
+       Forms!selectUPCIDs!List0.RowSource = Forms!selectUPCIDs!List2.RowSource
+       Forms!selectUPCIDs!List2.RowSource = ""
        'strSQLDefault = "Update " & strTable
        'strSQL = strSQLDefault & " set upcid_n_wp = REPLACE(DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers') + ISNULL(POSTCODE, ''), ' ', '')"
        'strSQL = strSQL & strSQLDefault & " set upcid_n_np = REPLACE(DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')+ISNULL(POSTCODE, ''), 'numbers'), ' ', '')"

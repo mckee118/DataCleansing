@@ -1,6 +1,6 @@
-﻿dbMemo "SQL" ="Update C_Address set upcid_n_wp = REPLACE(DBO.fn_extract_chars(ISNULL(Address1, "
+﻿dbMemo "SQL" ="Update S_Address set upcid_n_wp = REPLACE(DBO.fn_extract_chars(ISNULL(Address1, "
     "'')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers') +"
-    " ISNULL(POSTCODE, ''), ' ', '')Update C_Address set upcid_n_np = REPLACE(DBO.fn_"
+    " ISNULL(POSTCODE, ''), ' ', '')Update S_Address set upcid_n_np = REPLACE(DBO.fn_"
     "extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISN"
     "ULL(Address4, '')+ISNULL(POSTCODE, ''), 'numbers'), ' ', '')"
 dbMemo "Connect" ="ODBC;DSN=address;DATABASE=Address"

@@ -397,69 +397,85 @@ Dim j As Long
 Dim wanted As String
 Dim unwanted As String
 
-For i = LBound(ListBoxUPCIDs) To UBound(ListBoxUPCIDs)
-    For j = LBound(UPCIDsSplit) To UBound(UPCIDsSplit)
-        If ListBoxUPCIDs(i) = UPCIDsSplit(j) Then
-            ListBoxUPCIDs(i) = "@"
-        End If
-    Next j
-Next i
-
-'For i = LBound(UnwantedListBoxUPCIDs) To UBound(UnwantedListBoxUPCIDs)
-'    For j = LBound(UPCIDsSplit) To UBound(UPCIDsSplit)
-'        If UnwantedListBoxUPCIDs(i) <> UPCIDsSplit(j) Then
-'
-'        End If
-'    Next j
-'Next i
-
-'MsgBox unwanted
-
-wanted = Join(ListBoxUPCIDs, ", ")
-
-wanted = Replace(wanted, "@, ", "")
-
-wanted = Replace(wanted, "@", "")
-
-List2.RowSource = ""
+unwanted = ""
 
 If Text7.Value = "create" Then
-       Dim sqlUPCIDs As String
-       sqlUPCIDs = Replace(wanted, ", ", " varchar(128), ")
-       If wanted <> "" Then
-            sqlUPCIDs = sqlUPCIDs & " varchar(128)"
-       End If
-       
-       If wanted <> "" Then
-          If hasUPRN = "none" Then
-             strSQL = "ALTER TABLE "
-             strSQL = strSQL & strTable
-             strSQL = strSQL & " ADD " & sqlUPCIDs & ", UPRN varchar(128)"
+    For i = LBound(ListBoxUPCIDs) To UBound(ListBoxUPCIDs)
+        For j = LBound(UPCIDsSplit) To UBound(UPCIDsSplit)
+            If ListBoxUPCIDs(i) = UPCIDsSplit(j) Then
+                ListBoxUPCIDs(i) = "@"
+            End If
+        Next j
+    Next i
+
+    For i = LBound(UnwantedListBoxUPCIDs) To UBound(UnwantedListBoxUPCIDs)
+        For j = LBound(UPCIDsSplit) To UBound(UPCIDsSplit)
+            If UnwantedListBoxUPCIDs(i) = UPCIDsSplit(j) Then
+               unwanted = unwanted & UnwantedListBoxUPCIDs(i) & ", "
+            End If
+        Next j
+    Next i
+    
+
+    wanted = Join(ListBoxUPCIDs, ", ")
+    
+    wanted = Replace(wanted, "@, ", "")
+    
+    wanted = Replace(wanted, "@", "")
+    
+    If unwanted <> "" Then
+        unwanted = Left(unwanted, Len(unwanted) - 2)
+        strSQL = "ALTER TABLE "
+        strSQL = strSQL & strTable
+        strSQL = strSQL & " DROP COLUMN " & unwanted
              
-             ChangePTStatement "createUPCIDsAddress", strSQL
+        ChangePTStatement "deleteUPCIDsAddress", strSQL
        
-             DoCmd.SetWarnings (False)
-             DoCmd.OpenQuery ("createUPCIDsAddress")
-             MsgBox "UPCID(s) Created and UPRN column also added.", vbOKOnly, "Complete!"
-             DoCmd.SetWarnings (True)
-          Else
-             strSQL = "ALTER TABLE "
-             strSQL = strSQL & strTable
-             strSQL = strSQL & " ADD " & sqlUPCIDs
+        DoCmd.SetWarnings (False)
+        DoCmd.OpenQuery ("deleteUPCIDsAddress")
+        MsgBox "UPCID(s) Deleted.", vbOKOnly, "Complete!"
+        DoCmd.SetWarnings (True)
+    End If
+
+    List2.RowSource = ""
+
+    Dim sqlUPCIDs As String
+    sqlUPCIDs = Replace(wanted, ", ", " varchar(128), ")
+    If wanted <> "" Then
+         sqlUPCIDs = sqlUPCIDs & " varchar(128)"
+    End If
+       
+    If wanted <> "" Then
+       If hasUPRN = "none" Then
+          strSQL = "ALTER TABLE "
+          strSQL = strSQL & strTable
+          strSQL = strSQL & " ADD " & sqlUPCIDs & ", UPRN varchar(128)"
              
-             ChangePTStatement "createUPCIDsAddress", strSQL
+          ChangePTStatement "createUPCIDsAddress", strSQL
        
-             DoCmd.SetWarnings (False)
-             DoCmd.OpenQuery ("createUPCIDsAddress")
-             MsgBox "UPCID(s) Created", vbOKOnly, "Complete!"
-             DoCmd.SetWarnings (True)
+          DoCmd.SetWarnings (False)
+          DoCmd.OpenQuery ("createUPCIDsAddress")
+          MsgBox "UPCID(s) Created and UPRN column also added.", vbOKOnly, "Complete!"
+          DoCmd.SetWarnings (True)
+       Else
+          strSQL = "ALTER TABLE "
+          strSQL = strSQL & strTable
+          strSQL = strSQL & " ADD " & sqlUPCIDs
+          
+          ChangePTStatement "createUPCIDsAddress", strSQL
+       
+          DoCmd.SetWarnings (False)
+          DoCmd.OpenQuery ("createUPCIDsAddress")
+          MsgBox "UPCID(s) Created", vbOKOnly, "Complete!"
+          DoCmd.SetWarnings (True)
                           
-          End If
        End If
-       'added more UPCID's
+    End If
+    'added more UPCID's
       
 ElseIf Text7.Value = "add" Then
        strSQLDefault = "Update " & strTable
+       
        strSQL = strSQLDefault & " set upcid_n_wp = REPLACE(DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers') + ISNULL(POSTCODE, ''), ' ', '')"
        strSQL = strSQL & strSQLDefault & " set upcid_n_np = REPLACE(DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')+ISNULL(POSTCODE, ''), 'numbers'), ' ', '')"
        'strSQL = strSQL & strSQLDefault & " set upcid_ws_wp = dbo.unwanted(REPLACE(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')+ISNULL(POSTCODE, ''), ' ', ''))"
@@ -539,5 +555,9 @@ Me.List0.RowSourceType = "Value List"
 
 Me.List2.RowSource = UPCIDsExisting
 Me.List0.RowSource = UPCIDs
+
+'Me.List0.RowSource = UPCIDsExisting
+'Me.List2.RowSource = ""
+
 
 End Sub
