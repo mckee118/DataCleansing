@@ -13,11 +13,11 @@ PublishOption =1
     GridY =10
     Width =8674
     DatasheetFontHeight =11
-    ItemSuffix =10
-    Left =3825
-    Top =2415
-    Right =12750
-    Bottom =8355
+    ItemSuffix =13
+    Left =3720
+    Top =2085
+    Right =12645
+    Bottom =8025
     DatasheetGridlinesColor =14806254
         0xa9f965aa9b59e440
     End
@@ -124,7 +124,7 @@ PublishOption =1
             AlternateBackShade =95.0
             BackThemeColorIndex =1
                     RowSourceTypeInt =1
-                    OverlapFlags =85
+                    OverlapFlags =87
                     IMESentenceMode =3
                     Left =396
                     Top =737
@@ -143,7 +143,7 @@ PublishOption =1
                     LayoutCachedHeight =5102
                 End
                     RowSourceTypeInt =1
-                    OverlapFlags =85
+                    OverlapFlags =87
                     IMESentenceMode =3
                     Left =5331
                     Top =735
@@ -316,7 +316,7 @@ PublishOption =1
                     Visible = NotDefault
                     OverlapFlags =85
                     IMESentenceMode =3
-                    Left =3968
+                    Top =5272
                     Height =315
                     TabIndex =5
                     BorderColor =10921638
@@ -324,9 +324,28 @@ PublishOption =1
                     Name ="Text7"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =3968
-                    LayoutCachedWidth =5669
-                    LayoutCachedHeight =315
+                    LayoutCachedTop =5272
+                    LayoutCachedWidth =1701
+                    LayoutCachedHeight =5587
+                End
+                    OldBorderStyle =0
+                    OverlapFlags =93
+                    TextAlign =2
+                    IMESentenceMode =3
+                    Left =390
+                    Width =7887
+                    Height =735
+                    FontSize =14
+                    FontWeight =600
+                    TabIndex =6
+                    BorderColor =10921638
+                    ForeColor =4210752
+                    Name ="Text11"
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =390
+                    LayoutCachedWidth =8277
+                    LayoutCachedHeight =735
                 End
             End
         End
@@ -470,35 +489,137 @@ If Text7.Value = "create" Then
           DoCmd.SetWarnings (True)
                           
        End If
+              
+       'If IsNull(DLookup("table", "UPCIDs", "table = '" & strTable & "'")) = True Then
+       '   strSQL = "INSERT INTO UPCIDs ([table]) VALUES ('" & strTable & "')"
+       '   DoCmd.SetWarnings (False)
+       '   DoCmd.RunSQL strSQL
+       '   DoCmd.SetWarnings (True)
+       'End If
     End If
     'added more UPCID's
       
 ElseIf Text7.Value = "add" Then
-       strSQLDefault = "Update " & strTable
+       Dim caseStates() As String
+       Dim forSQL As String
+       caseStates = Split(Replace(List2.RowSource, ";", ", "), ", ")
        
-       strSQL = strSQLDefault & " set upcid_n_wp = REPLACE(DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers') + ISNULL(POSTCODE, ''), ' ', '')"
-       strSQL = strSQL & strSQLDefault & " set upcid_n_np = REPLACE(DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')+ISNULL(POSTCODE, ''), 'numbers'), ' ', '')"
-       'strSQL = strSQL & strSQLDefault & " set upcid_ws_wp = dbo.unwanted(REPLACE(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')+ISNULL(POSTCODE, ''), ' ', ''))"
-       'strSQL = strSQL & strSQLDefault & " set upcid_ws_np = dbo.unwanted(REPLACE(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')+DBO.fn_extract_chars(ISNULL(POSTCODE, ''), 'numbers'), ' ', ''))"
-       'strSQL = strSQL & strSQLDefault & " set upcid_cs_wp = dbo.unwanted(REPLACE(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'letters') + ISNULL(POSTCODE, ''), ' ', ''))"
-       'strSQL = strSQL & strSQLDefault & " set upcid_cs_np = dbo.unwanted(REPLACE(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'letters')+POINTER.DBO.fn_extract_chars(ISNULL(POSTCODE, ''), 'numbers'), ' ', ''))"
-       'strSQL = strSQL & strSQLDefault & " set upcid_n_nvd_wp = dbo.unwanted(REPLACE(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers')+CENSUS2011.DBO.nvd(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')) +ISNULL(POSTCODE, ''), ' ', ''))"
-       'strSQL = strSQL & strSQLDefault & " set upcid_n_nvd_np = dbo.unwanted(REPLACE(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers')+CENSUS2011.DBO.nvd(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')) +POINTER.DBO.fn_extract_chars(ISNULL(POSTCODE, ''), 'numbers'), ' ', ''))"
-       'strSQL = strSQL & strSQLDefault & " set upcid_nvd_wp = dbo.unwanted(REPLACE(CENSUS2011.DBO.nvd(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')) +ISNULL(POSTCODE, ''), ' ', ''))"
-       'strSQL = strSQL & strSQLDefault & " set upcid_nvd_np = dbo.unwanted(REPLACE(CENSUS2011.DBO.nvd(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')) +POINTER.DBO.fn_extract_chars(ISNULL(POSTCODE, ''), 'numbers'), ' ', ''))"
-       'strSQL = strSQL & strSQLDefault & " set upcid_n_fc_wp = dbo.unwanted(REPLACE(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers')+LEFT(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'letters'), 1)+ISNULL(POSTCODE, ''), ' ', ''))"
-       'strSQL = strSQL & strSQLDefault & " set upcid_n_fc_np = dbo.unwanted(REPLACE(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers')+LEFT(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'letters'), 1)+POINTER.DBO.fn_extract_chars(ISNULL(POSTCODE, ''), 'numbers'), ' ', ''))"
-       'strSQL = strSQL & strSQLDefault & " set upcid_n_3c_wp = dbo.unwanted(REPLACE(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers')+LEFT(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'letters'), 3)+ISNULL(POSTCODE, ''), ' ', ''))"
-       'strSQL = strSQL & strSQLDefault & " set upcid_n_3c_np = dbo.unwanted(REPLACE(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers')+LEFT(POINTER.DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'letters'), 3)+POINTER.DBO.fn_extract_chars(ISNULL(POSTCODE, ''), 'numbers'), ' ', ''))"
+       forSQL = Replace(List2.RowSource, ";", ", ")
        
+       Dim sqlDefault As String
+       Dim sqlstr As String
+            
+       sqlDefault = "Update " & strTable & " set"
+       sqlstr = ""
+       
+       For i = LBound(caseStates) To UBound(caseStates)
+            Select Case caseStates(i)
+            
+            Case "UPCID_N_WP"
+                sqlstr = sqlstr & sqlDefault & " upcid_n_wp = REPLACE(DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers') + ISNULL(POSTCODE, ''), ' ', '')"
+            Case "UPCID_N_NP"
+                sqlstr = sqlstr & sqlDefault & " upcid_n_np = REPLACE(DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')+ISNULL(POSTCODE, ''), 'numbers'), ' ', '')"
+            Case "UPCID_WS_WP"
+                sqlstr = sqlstr & sqlDefault & " upcid_ws_wp = dbo.unwanted(REPLACE(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')+ISNULL(POSTCODE, ''), ' ', ''))"
+            Case "UPCID_WS_NP"
+                sqlstr = sqlstr & sqlDefault & " upcid_ws_np = dbo.unwanted(REPLACE(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')+DBO.fn_extract_chars(ISNULL(POSTCODE, ''), 'numbers'), ' ', ''))"
+            Case "UPCID_CS_WP"
+                sqlstr = sqlstr & sqlDefault & " upcid_cs_wp = dbo.unwanted(REPLACE(DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'letters') + ISNULL(POSTCODE, ''), ' ', ''))"
+            Case "UPCID_CS_NP"
+                sqlstr = sqlstr & sqlDefault & " upcid_cs_np = dbo.unwanted(REPLACE(DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'letters')+DBO.fn_extract_chars(ISNULL(POSTCODE, ''), 'numbers'), ' ', ''))"
+            Case "UPCID_N_NVD_WP"
+                sqlstr = sqlstr & sqlDefault & " upcid_n_nvd_wp = dbo.unwanted(REPLACE(DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers')+DBO.nvd(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')) +ISNULL(POSTCODE, ''), ' ', ''))"
+            Case "UPCID_N_NVD_NP"
+                sqlstr = sqlstr & sqlDefault & " upcid_n_nvd_np = dbo.unwanted(REPLACE(DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers')+DBO.nvd(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')) +DBO.fn_extract_chars(ISNULL(POSTCODE, ''), 'numbers'), ' ', ''))"
+            Case "UPCID_NVD_WP"
+                sqlstr = sqlstr & sqlDefault & " upcid_nvd_wp = dbo.unwanted(REPLACE(DBO.nvd(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')) +ISNULL(POSTCODE, ''), ' ', ''))"
+            Case "UPCID_NVD_NP"
+                sqlstr = sqlstr & sqlDefault & " upcid_nvd_np = dbo.unwanted(REPLACE(DBO.nvd(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')) +POINTER.DBO.fn_extract_chars(ISNULL(POSTCODE, ''), 'numbers'), ' ', ''))"
+            Case "UPCID_N_FC_WP"
+                sqlstr = sqlstr & sqlDefault & " upcid_n_fc_wp = dbo.unwanted(REPLACE(DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers')+LEFT(DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'letters'), 1)+ISNULL(POSTCODE, ''), ' ', ''))"
+            Case "UPCID_N_FC_NP"
+                sqlstr = sqlstr & sqlDefault & " upcid_n_fc_np = dbo.unwanted(REPLACE(DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers')+LEFT(DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'letters'), 1)+DBO.fn_extract_chars(ISNULL(POSTCODE, ''), 'numbers'), ' ', ''))"
+            Case "UPCID_N_3C_WP"
+                sqlstr = sqlstr & sqlDefault & " upcid_n_3c_wp = dbo.unwanted(REPLACE(DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers')+LEFT(DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'letters'), 3)+ISNULL(POSTCODE, ''), ' ', ''))"
+            Case "UPCID_N_3C_NP"
+                sqlstr = sqlstr & sqlDefault & " upcid_n_3c_np = dbo.unwanted(REPLACE(DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers')+LEFT(DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'letters'), 3)+DBO.fn_extract_chars(ISNULL(POSTCODE, ''), 'numbers'), ' ', ''))"
+            End Select
+       Next i
+              
+       strSQL = sqlstr
+       'strSQL = Left(strSQL, Len(strSQL) - 2)
+             
        'call the pass through function
        ChangePTStatement "addUPCIDsAddress", strSQL
+       
+       
+       If IsNull(DLookup("table", "UPCIDs", "table = '" & strTable & "'")) = True Then
+          strSQL = "INSERT INTO UPCIDs ([table], UPCIDs) VALUES ('" & strTable & "', '" & forSQL & "')"
+          DoCmd.SetWarnings (False)
+          DoCmd.RunSQL strSQL
+          DoCmd.SetWarnings (True)
+       Else
+          DoCmd.SetWarnings (False)
+          strSQL = "DELETE FROM UPCIDs WHERE [table] = '" & strTable & "'"
+          DoCmd.RunSQL strSQL
+          strSQL = "INSERT INTO UPCIDs ([table], UPCIDs) VALUES ('" & strTable & "', '" & forSQL & "')"
+          DoCmd.RunSQL strSQL
+          DoCmd.SetWarnings (True)
+       End If
        
         DoCmd.SetWarnings (False)
         DoCmd.OpenQuery ("addUPCIDsAddress")
         MsgBox "UPCIDs Added", vbOKOnly, "Complete"
         DoCmd.SetWarnings (True)
+
+ElseIf Text7.Value = "match" Then
+    MsgBox List2.RowSource
+    caseStates = Split(Replace(List2.RowSource, ";", ", "), ", ")
+                
+    sqlstr = ""
+    
+    For i = LBound(caseStates) To UBound(caseStates)
+    
+            sqlstr = sqlstr & "select a." & caseStates(i) & " as add" & caseStates(i) & ", p." & caseStates(i) & " as P" & caseStates(i) & ", p.UPRN" & _
+            " into tempPointer" & _
+            " from " & strTable & " a" & _
+            " inner join POINTER p" & _
+            " on a." & caseStates(i) & " = p." & caseStates(i) & _
+            vbNewLine & _
+            "select add" & caseStates(i) & ", COUNT(*) as counter" & _
+            " into tempAddress" & _
+            " from tempPointer" & _
+            " group by add" & caseStates(i) & _
+            " having COUNT(*) >= 1" & _
+            vbNewLine & _
+            "Update main" & _
+            " Set main.uprn = tp.uprn" & _
+            " from " & strTable & " main" & _
+            " inner join tempPointer tp" & _
+            " on main." & caseStates(i) & " = tp.P" & caseStates(i) & _
+            " inner join tempAddress ta" & _
+            " on main." & caseStates(i) & " = ta.add" & caseStates(i) & _
+            " where main.uprn Is Null and len(" & caseStates(i) & ") > 1" & _
+            vbNewLine & _
+            "drop table tempPointer" & _
+            vbNewLine & _
+            "drop table tempAddress" & _
+            vbNewLine
+            
+       Next i
+       
+       strSQL = sqlstr
+             
+       'call the pass through function
+       ChangePTStatement "addUPRN", strSQL
+       
+        DoCmd.SetWarnings (False)
+        DoCmd.OpenQuery ("addUPRN")
+        MsgBox "UPRNs Added", vbOKOnly, "Complete"
+        DoCmd.SetWarnings (True)
+       
 End If
+
 Forms!FrontPage!Command4.Enabled = True
 DoCmd.Close
 End Sub
@@ -558,6 +679,5 @@ Me.List0.RowSource = UPCIDs
 
 'Me.List0.RowSource = UPCIDsExisting
 'Me.List2.RowSource = ""
-
 
 End Sub

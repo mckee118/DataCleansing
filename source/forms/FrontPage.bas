@@ -7,11 +7,11 @@ PublishOption =1
     PictureAlignment =2
     DatasheetGridlinesBehavior =3
     GridY =10
-    Width =11565
+    Width =15847
     DatasheetFontHeight =11
-    ItemSuffix =18
-    Right =12105
-    Bottom =7140
+    ItemSuffix =28
+    Right =11850
+    Bottom =7170
     DatasheetGridlinesColor =14806254
         0x87b0563c9b51e440
     End
@@ -138,7 +138,89 @@ PublishOption =1
             GridlineThemeColorIndex =1
             GridlineShade =65.0
         End
-            Height =7149
+            BorderLineStyle =0
+            Width =1701
+            Height =1701
+            BorderThemeColorIndex =1
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+            BorderShade =65.0
+            ShowPageHeaderAndPageFooter =1
+        End
+            Width =5103
+            Height =3402
+            FontSize =11
+            FontName ="Calibri"
+            ThemeFontIndex =0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+            UseTheme =1
+            Shape =3
+            BackThemeColorIndex =1
+            BackShade =85.0
+            BorderLineStyle =0
+            BorderColor =16777215
+            BorderThemeColorIndex =2
+            BorderTint =60.0
+            HoverThemeColorIndex =1
+            PressedThemeColorIndex =1
+            HoverForeThemeColorIndex =0
+            HoverForeTint =75.0
+            PressedForeThemeColorIndex =0
+            PressedForeTint =75.0
+            ForeThemeColorIndex =0
+            ForeTint =75.0
+        End
+            Width =1701
+            Height =1701
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+            Height =240
+            GridlineColor =12632256
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+            BorderWidth =1
+            BorderLineStyle =0
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+            Width =283
+            Height =283
+            ForeColor =-2
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+            HoverColor =-2
+            HoverThemeColorIndex =2
+            HoverTint =20.0
+            PressedColor =-2
+            PressedThemeColorIndex =2
+            PressedTint =60.0
+            HoverForeColor =-2
+            HoverForeThemeColorIndex =0
+            HoverForeTint =75.0
+            PressedForeColor =-2
+            PressedForeThemeColorIndex =0
+            PressedForeTint =75.0
+            BackColor =15790320
+            BackThemeColorIndex =1
+            OldBorderStyle =0
+            BorderLineStyle =0
+            BorderThemeColorIndex =3
+            BorderShade =90.0
+            ThemeFontIndex =1
+            FontName ="Calibri"
+            FontWeight =400
+            FontSize =11
+            ForeThemeColorIndex =0
+            ForeTint =75.0
+        End
+            Height =7755
             Name ="Detail"
             AutoHeight =1
             AlternateBackColor =15921906
@@ -427,6 +509,7 @@ Private Sub Command1_Click()
 
        Forms!selectUPCIDs!Text7.Value = "create"
        
+       Forms!selectUPCIDs!Text11.Value = "Select UPCID Columns to add to the table " & strTable
            
     Exit Sub
 ErrorHandler:
@@ -438,18 +521,36 @@ Private Sub Command10_Click()
        Dim strSQL As String
        Dim strTable As String
        strTable = Combo8.Value 'set this to the value in your dropdown list
-    
        
+       strSQL = "SELECT COLUMN_NAME"
+       strSQL = strSQL & " FROM [INFORMATION_SCHEMA].COLUMNS"
+       strSQL = strSQL & " WHERE COLUMN_NAME LIKE 'upcid%' AND TABLE_NAME = " & "'" & strTable & "'"
+       
+       'call the pass through function
+       ChangePTStatement "getUPCIDColumns", strSQL
+    
+       DoCmd.OpenForm "selectUPCIDs"
+
+       Forms!selectUPCIDs!Text7.Value = "match"
+       
+       Forms!selectUPCIDs!Text11.Value = "Select UPCID Columns from table " & strTable & " you wish to match on"
+       
+       If IsNull(DLookup("[table]", "UPCIDs", "[table] = '" & strTable & "'")) = False Then
+          Forms!selectUPCIDs!List0.RowSource = DLookup("UPCIDs", "UPCIDs", "[Table] = '" & strTable & "'")
+       Else
+          Forms!selectUPCIDs!List0.RowSource = ""
+       End If
+       Forms!selectUPCIDs!List2.RowSource = ""
        
        'call the pass through function
        'ChangePTStatement "addUPRN", strSQL
        
-       DoCmd.SetWarnings (False)
-       DoCmd.OpenQuery ("addUPRN")
-       MsgBox "UPRNs Added", vbOKOnly, "Complete!"
-       DoCmd.SetWarnings (True)
-       DoCmd.OpenForm ("CompareUPCID")
-       Me.Command10.Enabled = False
+       'DoCmd.SetWarnings (False)
+       'DoCmd.OpenQuery ("addUPRN")
+       'MsgBox "UPRNs Added", vbOKOnly, "Complete!"
+       'DoCmd.SetWarnings (True)
+       'DoCmd.OpenForm ("CompareUPCID")
+       'Me.Command10.Enabled = False
     Exit Sub
 ErrorHandler:
     MsgBox "An error occured -  error  " & Err.Number & ": " & Err.Description
@@ -486,6 +587,8 @@ Private Sub Command4_Click()
           
        Forms!selectUPCIDs!Text7.Value = "add"
        
+       Forms!selectUPCIDs!Text11.Value = "Select UPCID Columns to populate in the table " & strTable
+            
        Forms!selectUPCIDs!List0.RowSource = Forms!selectUPCIDs!List2.RowSource
        Forms!selectUPCIDs!List2.RowSource = ""
        'strSQLDefault = "Update " & strTable

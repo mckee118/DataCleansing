@@ -1,0 +1,3 @@
+Update UPCID_N_NVD_WP 1 hr 8 mins D_table 5350999
+
+Update POINTER 1hr 20 mins 930220

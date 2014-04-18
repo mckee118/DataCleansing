@@ -1,7 +1,7 @@
 ﻿dbMemo "SQL" ="SELECT a.address1, a.address2, a.address3, a.address4, a.address5, a.postcode AS"
-    " addPostcode, a.uprn AS addUPRN, a.upcid_n_wp, p.building_number, p.primary_thor"
-    "fare, p.postcode AS POINTPostcode, p.uprn AS POINTUPRN\015\012FROM C_address AS "
-    "a INNER JOIN POINTER AS p ON a.uprn = p.uprn;\015\012"
+    " addPostcode, a.uprn AS addUPRN, a.upcid_ws_wp, a.upcid_n_nvd_wp, p.building_num"
+    "ber, p.primary_thorfare, p.postcode AS POINTPostcode, p.uprn AS POINTUPRN\015\012"
+    "FROM G_address AS a INNER JOIN POINTER AS p ON a.uprn = p.uprn;"
 dbMemo "Connect" ="ODBC;DSN=address;DATABASE=Address"
 dbBoolean "ReturnsRecords" ="-1"
 dbInteger "ODBCTimeout" ="60"
@@ -79,5 +79,10 @@ dbByte "PublishToWeb" ="1"
     End
         dbText "Name" ="POINTUPRN"
         dbLong "AggregateType" ="-1"
+    End
+        dbText "Name" ="upcid_ws_wp"
+        dbLong "AggregateType" ="-1"
+    End
+        dbText "Name" ="upcid_n_nvd_wp"
     End
 End

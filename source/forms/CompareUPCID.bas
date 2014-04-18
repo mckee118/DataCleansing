@@ -9,9 +9,9 @@ PublishOption =1
     GridY =10
     Width =12422
     DatasheetFontHeight =11
-    ItemSuffix =19
-    Right =17265
-    Bottom =7890
+    ItemSuffix =21
+    Right =12960
+    Bottom =7185
     DatasheetGridlinesColor =14806254
         0x23c712d5b051e440
     End
@@ -430,7 +430,7 @@ PublishOption =1
                     BorderColor =10921638
                     ForeColor =4210752
                     Name ="upcid_n_wp"
-                    ControlSource ="upcid_n_wp"
+                    ControlSource ="upcid_ws_wp"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =6463
@@ -692,6 +692,39 @@ PublishOption =1
                     WebImagePaddingTop =2
                     WebImagePaddingRight =1
                     WebImagePaddingBottom =1
+                End
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =6463
+                    Top =4686
+                    Height =315
+                    TabIndex =13
+                    BorderColor =10921638
+                    ForeColor =4210752
+                    Name ="Text19"
+                    ControlSource ="upcid_n_nvd_wp"
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =6463
+                    LayoutCachedTop =4686
+                    LayoutCachedWidth =8164
+                    LayoutCachedHeight =5001
+                            OverlapFlags =85
+                            Left =4762
+                            Top =4686
+                            Width =1200
+                            Height =315
+                            BorderColor =8355711
+                            ForeColor =8355711
+                            Name ="Label20"
+                            Caption ="upcid_n_wp"
+                            GridlineColor =10921638
+                            LayoutCachedLeft =4762
+                            LayoutCachedTop =4686
+                            LayoutCachedWidth =5962
+                            LayoutCachedHeight =5001
+                        End
+                    End
                 End
             End
         End
