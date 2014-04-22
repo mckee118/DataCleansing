@@ -1,26 +1,25 @@
 ﻿Version =20
 VersionRequired =20
 PublishOption =1
-    PopUp = NotDefault
     Modal = NotDefault
     RecordSelectors = NotDefault
     NavigationButtons = NotDefault
     DividingLines = NotDefault
     AllowDesignChanges = NotDefault
     DefaultView =0
+    ScrollBars =0
     PictureAlignment =2
     DatasheetGridlinesBehavior =3
     GridY =10
     Width =8674
     DatasheetFontHeight =11
     ItemSuffix =13
-    Left =3720
-    Top =2085
-    Right =12645
-    Bottom =8025
+    Right =8925
+    Bottom =5940
     DatasheetGridlinesColor =14806254
         0xa9f965aa9b59e440
     End
+    Caption ="Selecting Options"
     OnOpen ="[Event Procedure]"
     DatasheetFontName ="Calibri"
         0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
@@ -134,6 +133,9 @@ PublishOption =1
                     BorderColor =10921638
                     Name ="List0"
                     RowSourceType ="Value List"
+                    RowSource ="UPCID_N_NP, UPCID_WS_WP, UPCID_WS_NP, UPCID_CS_WP, UPCID_CS_NP, UPCID_N_NVD_WP, "
+                        "UPCID_N_NVD_NP, UPCID_NVD_WP, UPCID_NVD_NP, UPCID_N_FC_WP, UPCID_N_FC_NP, UPCID_"
+                        "N_3C_WP, UPCID_N_3C_NP"
                     GridlineColor =10921638
                     AllowValueListEdits =0
 
@@ -359,6 +361,7 @@ Attribute VB_Exposed = False
 Option Compare Database
 Public UPCIDsExisting As String
 Public UPCIDs As String
+Public strTable As String
 
 Private Sub Command4_Click()
 
@@ -389,13 +392,12 @@ End Sub
 Private Sub Command6_Click()
 
 Dim strSQL As String
-Dim strTable As String
 Dim UPCIDsSplit() As String
 Dim ListBoxUPCIDs() As String
 Dim UnwantedListBoxUPCIDs() As String
 Dim hasUPRN As String
 
-strTable = Forms!FrontPage!Combo8.Value
+'strTable = Forms!FrontPage!Combo8.Value
 
 UPCIDsSplit() = Split(UPCIDsExisting, ", ")
 
@@ -620,7 +622,7 @@ ElseIf Text7.Value = "match" Then
        
 End If
 
-Forms!FrontPage!Command4.Enabled = True
+'Forms!FrontPage!Command4.Enabled = True
 DoCmd.Close
 End Sub
 
@@ -639,8 +641,14 @@ Private Sub Form_Open(Cancel As Integer)
 Dim RS As DAO.Recordset
 Dim sql As String
 
+If Not IsNull(Me.OpenArgs) Then
+    strTable = Me.OpenArgs
+End If
+
 UPCIDsExisting = ""
 UPCIDs = ""
+       
+DoCmd.Maximize
        
 sql = "select MatchKeys from getMatchKeysColumnPresent"
        

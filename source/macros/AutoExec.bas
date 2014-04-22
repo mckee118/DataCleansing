@@ -8,7 +8,7 @@ End
     Argument ="SplashEnd()"
 End
     Action ="OpenForm"
-    Argument ="FrontPage"
+    Argument ="selectTable"
     Argument ="0"
     Argument =""
     Argument =""
@@ -25,6 +25,6 @@ End
         "n Name=\"RunCode\"><Argument Name=\"FunctionName\">SplashEnd()</Argument></Actio"
         "n><Action Name=\"OpenForm"
 End
-    Comment ="_AXL:\"><Argument Name=\"FormName\">FrontPage</Argument></Action></Statements></"
-        "UserInterfaceMacro>"
+    Comment ="_AXL:\"><Argument Name=\"FormName\">selectTable</Argument></Action></Statements>"
+        "</UserInterfaceMacro>"
 End
