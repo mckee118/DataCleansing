@@ -16,8 +16,8 @@ PublishOption =1
     ItemSuffix =6
     Left =360
     Top =360
-    Right =16440
-    Bottom =9165
+    Right =11550
+    Bottom =8910
     DatasheetGridlinesColor =14806254
         0x1f739f21f762e440
     End
@@ -307,6 +307,7 @@ Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Compare Database
+Public statusmsg As Variant
 
 Public Sub ChangePTStatement(p_QueryName As String, p_sql As String)
 'for changing pass-through's in this db
@@ -323,7 +324,6 @@ Private Sub Combo8_Change()
 On Error GoTo ErrorHandler:
        Dim strSQL As String
        Dim strTable As String
-       Dim statusmsg As Variant
        statusmsg = SysCmd(acSysCmdRemoveMeter)
        
        strTable = Combo8.Value 'set this to the value in dropdown list
@@ -336,13 +336,14 @@ On Error GoTo ErrorHandler:
        statusmsg = SysCmd(acSysCmdSetStatus, "Running extensive query, please wait...")
 
        'Open the Msg Form, Pass a msg using OpenArgs
-       DoCmd.OpenForm "frmCustomMSG"
+       DoCmd.OpenForm "frmCustomMSG", , , , , , "This query may take some time, Please wait..."
        DoCmd.SetWarnings (False)   'Turn off default warning msg
-            
+       Pause (1)
        RecordCount.Caption = "There are " & Format(DLookup("[counter]", "countRowsAddress"), "##,##") & " records in the " & strTable & " table"
        RecordCount.Visible = True
        
-       Application.SysCmd acSysCmdClearStatus
+       statusmsg = SysCmd(acSysCmdSetStatus, "To continue click Next >>")
+       'Application.SysCmd acSysCmdClearStatus
        
        DoCmd.SetWarnings (True)    'Turn on default warning msg
        'Close the Msg Form
@@ -359,6 +360,7 @@ Private Sub Command4_Click()
 On Error GoTo ErrorHandler:
        Dim strSQL As String
        Dim strTable As String
+       statusmsg = SysCmd(acSysCmdRemoveMeter)
        
        strTable = Combo8.Value 'set this to the value in dropdown list
           
@@ -368,12 +370,16 @@ On Error GoTo ErrorHandler:
 
        'call the pass through function
        ChangePTStatement "getUPCIDColumns", strSQL
+       
+       statusmsg = SysCmd(acSysCmdSetStatus, "Opening Form, please wait...")
 
        DoCmd.OpenForm "selectUPCIDs", , , , , , Combo8.Value
 
        Forms!selectUPCIDs!Text7.Value = "create"
        
        Forms!selectUPCIDs!Text11.Value = "Select UPCID Columns to add to the table " & strTable
+       
+       statusmsg = SysCmd(acSysCmdSetStatus, "Please select the UPCIDs you wish to add to/delete from the selected table. Click the 'i' for more information.")
            
     Exit Sub
 ErrorHandler:
@@ -382,13 +388,41 @@ ErrorHandler:
 End Sub
 
 Private Sub Form_Open(Cancel As Integer)
+statusmsg = SysCmd(acSysCmdRemoveMeter)
+
 DoCmd.Maximize
+
+statusmsg = SysCmd(acSysCmdSetStatus, "Select a table from the drop-down box of for more information click 'i'")
+
 End Sub
 
 Private Sub Image5_Click()
+statusmsg = SysCmd(acSysCmdRemoveMeter)
+
+statusmsg = SysCmd(acSysCmdSetStatus, "Opening More Information, please wait...")
 
 DoCmd.OpenForm "moreInformation"
 
-Forms!moreInformation.infoText.Caption = "Select a table from the drop down box provided (you will have to sign into the database through the pop up when prompted if you have not already done so), a message below the drop down box will display the number of records contained in that table. When you have selected the table you wish to use, simply click the next button."
+Forms!moreInformation.infoText.Caption = "Select a table from the drop-down box provided (you will need to sign into the database through the pop-up when prompted if you have not already done so), a message below the drop-down box will display the number of records contained in that table (some tables may take longer than others). When you have selected the table you wish to use, simply click the next button."
 
 End Sub
+
+Public Function Pause(NumberOfSeconds As Variant)
+On Error GoTo Err_Pause
+
+    Dim PauseTime As Variant, start As Variant
+
+    PauseTime = NumberOfSeconds
+    start = Timer
+    Do While Timer < start + PauseTime
+    DoEvents
+    Loop
+
+Exit_Pause:
+    Exit Function
+
+Err_Pause:
+    MsgBox Err.Number & " - " & Err.Description, vbCritical, "Pause()"
+    Resume Exit_Pause
+
+End Function

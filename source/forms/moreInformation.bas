@@ -13,18 +13,21 @@ PublishOption =1
     PictureAlignment =2
     DatasheetGridlinesBehavior =3
     GridY =10
-    Width =7143
+    Width =11168
     DatasheetFontHeight =11
     ItemSuffix =1
     Left =3720
-    Top =2685
-    Right =10860
-    Bottom =6180
+    Top =1320
+    Right =15270
+    Bottom =8265
     DatasheetGridlinesColor =14806254
         0xb1919b3a0063e440
     End
     Caption ="More Information"
     DatasheetFontName ="Calibri"
+        0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
+        0x010000006801000000000000a10700000100000001000000
+    End
     AllowDatasheetView =0
     AllowPivotTableView =0
     AllowPivotChartView =0
@@ -81,6 +84,24 @@ PublishOption =1
             PressedForeThemeColorIndex =0
             PressedForeTint =75.0
         End
+            AddColon = NotDefault
+            FELineBreak = NotDefault
+            BorderLineStyle =0
+            Width =1701
+            LabelX =-1701
+            FontSize =11
+            FontName ="Calibri"
+            AsianLineBreak =1
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            ThemeFontIndex =1
+            ForeThemeColorIndex =0
+            ForeTint =75.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+            CanGrow = NotDefault
             Height =4025
             BackColor =15590879
             Name ="Detail"
@@ -88,24 +109,8 @@ PublishOption =1
             AlternateBackThemeColorIndex =1
             AlternateBackShade =95.0
                     OverlapFlags =85
-                    Left =120
-                    Top =225
-                    Width =6885
-                    Height =3060
-                    FontSize =16
-                    BorderColor =8355711
-                    Name ="infoText"
-                    Caption ="No extra information at this time."
-                    GridlineColor =10921638
-                    LayoutCachedLeft =120
-                    LayoutCachedTop =225
-                    LayoutCachedWidth =7005
-                    LayoutCachedHeight =3285
-                    ForeTint =100.0
-                End
-                    OverlapFlags =85
-                    Left =5160
-                    Top =3375
+                    Left =9135
+                    Top =3405
                     Width =1927
                     Height =511
                     FontSize =16
@@ -117,10 +122,10 @@ PublishOption =1
                     ControlTipText ="Click to continue"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =5160
-                    LayoutCachedTop =3375
-                    LayoutCachedWidth =7087
-                    LayoutCachedHeight =3886
+                    LayoutCachedLeft =9135
+                    LayoutCachedTop =3405
+                    LayoutCachedWidth =11062
+                    LayoutCachedHeight =3916
                     ForeThemeColorIndex =4
                     ForeTint =100.0
                     ForeShade =50.0
@@ -141,6 +146,24 @@ PublishOption =1
                     WebImagePaddingRight =1
                     WebImagePaddingBottom =1
                 End
+                    OverlapFlags =85
+                    Left =120
+                    Top =225
+                    Width =10935
+                    Height =3060
+                    FontSize =16
+                    BorderColor =8355711
+                    ForeColor =6108695
+                    Name ="infoText"
+                    Caption ="No information at this time."
+                    GridlineColor =10921638
+                    LayoutCachedLeft =120
+                    LayoutCachedTop =225
+                    LayoutCachedWidth =11055
+                    LayoutCachedHeight =3285
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                End
             End
         End
     End
@@ -151,7 +174,11 @@ Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Compare Database
+Public statusmsg As Variant
 
 Private Sub Command4_Click()
+
+statusmsg = SysCmd(acSysCmdSetStatus, "Idle")
+
 DoCmd.Close
 End Sub

@@ -11,11 +11,11 @@ PublishOption =1
     PictureAlignment =2
     DatasheetGridlinesBehavior =3
     GridY =10
-    Width =8674
+    Width =18769
     DatasheetFontHeight =11
-    ItemSuffix =13
-    Right =8925
-    Bottom =5940
+    ItemSuffix =17
+    Right =18765
+    Bottom =9165
     DatasheetGridlinesColor =14806254
         0xa9f965aa9b59e440
     End
@@ -53,6 +53,21 @@ PublishOption =1
             GridlineThemeColorIndex =1
             GridlineShade =65.0
         End
+            BackStyle =0
+            OldBorderStyle =0
+            BorderLineStyle =0
+            SizeMode =3
+            PictureAlignment =2
+            Width =1701
+            Height =1701
+            BorderColor =16777215
+            GridlineColor =16777215
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
             Width =1701
             Height =283
             FontSize =11
@@ -80,6 +95,14 @@ PublishOption =1
             HoverForeTint =75.0
             PressedForeThemeColorIndex =0
             PressedForeTint =75.0
+        End
+            BorderLineStyle =0
+            LabelX =230
+            LabelY =-30
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
         End
             AddColon = NotDefault
             FELineBreak = NotDefault
@@ -115,21 +138,22 @@ PublishOption =1
             GridlineThemeColorIndex =1
             GridlineShade =65.0
         End
-            Height =5952
+            Height =9977
+            BackColor =15590879
             Name ="Detail"
-            AutoHeight =1
             AlternateBackColor =15921906
             AlternateBackThemeColorIndex =1
             AlternateBackShade =95.0
-            BackThemeColorIndex =1
                     RowSourceTypeInt =1
                     OverlapFlags =87
                     IMESentenceMode =3
-                    Left =396
-                    Top =737
+                    Left =6585
+                    Top =3225
                     Width =3005
-                    Height =4365
-                    ForeColor =4210752
+                    Height =5160
+                    FontSize =14
+                    BackColor =9592887
+                    ForeColor =16777215
                     BorderColor =10921638
                     Name ="List0"
                     RowSourceType ="Value List"
@@ -139,87 +163,73 @@ PublishOption =1
                     GridlineColor =10921638
                     AllowValueListEdits =0
 
-                    LayoutCachedLeft =396
-                    LayoutCachedTop =737
-                    LayoutCachedWidth =3401
-                    LayoutCachedHeight =5102
+                    LayoutCachedLeft =6585
+                    LayoutCachedTop =3225
+                    LayoutCachedWidth =9590
+                    LayoutCachedHeight =8385
+                    BackThemeColorIndex =4
+                    BackShade =75.0
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
                 End
                     RowSourceTypeInt =1
                     OverlapFlags =87
                     IMESentenceMode =3
-                    Left =5331
-                    Top =735
-                    Width =2948
-                    Height =4365
+                    Left =11505
+                    Top =3225
+                    Width =3005
+                    Height =5160
+                    FontSize =14
                     TabIndex =1
-                    ForeColor =4210752
+                    BackColor =9592887
+                    ForeColor =16777215
                     BorderColor =10921638
                     Name ="List2"
                     RowSourceType ="Value List"
                     GridlineColor =10921638
                     AllowValueListEdits =0
 
-                    LayoutCachedLeft =5331
-                    LayoutCachedTop =735
-                    LayoutCachedWidth =8279
-                    LayoutCachedHeight =5100
+                    LayoutCachedLeft =11505
+                    LayoutCachedTop =3225
+                    LayoutCachedWidth =14510
+                    LayoutCachedHeight =8385
+                    BackThemeColorIndex =4
+                    BackShade =75.0
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
                 End
                     OverlapFlags =85
-                    Left =3968
-                    Top =1757
-                    Width =732
+                    Left =9810
+                    Top =4125
+                    Width =1482
                     Height =510
+                    FontSize =16
+                    FontWeight =700
                     TabIndex =2
-                    ForeColor =4210752
+                    ForeColor =6373413
                     Name ="Command4"
-                    Caption ="Command4"
+                    Caption ="Add +"
                     OnClick ="[Event Procedure]"
                     GridlineColor =10921638
-                        0x2800000010000000100000000100200000000000000000000000000000000000 ,
-                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-                        0x00000000904820ff904820300000000000000000000000000000000000000000 ,
-                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-                        0x00000000a05020ffa05030ff9048203000000000000000000000000000000000 ,
-                        0x0000000000000000000000000000000000000000d08060ff904820ffa04820ff ,
-                        0xa05020ffb05830ffc06840ffa05030ff90482030000000000000000000000000 ,
-                        0x0000000000000000000000000000000000000000d08860ffffb090fff09060ff ,
-                        0xf08850ffe08050ffd07850ffc07040ffa05830ff904820300000000000000000 ,
-                        0x0000000000000000000000000000000000000000e09070ffffb890ffffa880ff ,
-                        0xff9060fff09060ffe08850ffe07850ffc07040ffb05830ff0000000000000000 ,
-                        0x0000000000000000000000000000000000000000e09870ffffc0a0ffffc0a0ff ,
-                        0xffb080ffffa880ffffa070ffe08050ffb05830ffb05830200000000000000000 ,
-                        0x0000000000000000000000000000000000000000f0a070ffe09870ffe09070ff ,
-                        0xd08860ffe09070fff09870ffb05830ffb0583020000000000000000000000000 ,
-                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-                        0x00000000e09870ffc07850ffb058302000000000000000000000000000000000 ,
-                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-                        0x00000000f0a070ffd08060200000000000000000000000000000000000000000 ,
-                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-                        0x0000000000000000
-                    End
 
-                    LayoutCachedLeft =3968
-                    LayoutCachedTop =1757
-                    LayoutCachedWidth =4700
-                    LayoutCachedHeight =2267
+                    LayoutCachedLeft =9810
+                    LayoutCachedTop =4125
+                    LayoutCachedWidth =11292
+                    LayoutCachedHeight =4635
+                    ForeThemeColorIndex =4
+                    ForeTint =100.0
+                    ForeShade =50.0
+                    Gradient =0
                     BackColor =14136213
                     BorderColor =14136213
-                    HoverColor =15060409
+                    HoverColor =16051931
+                    HoverThemeColorIndex =8
+                    HoverTint =20.0
                     PressedColor =9592887
-                    HoverForeColor =4210752
+                    HoverForeColor =6373413
+                    HoverForeThemeColorIndex =4
+                    HoverForeTint =100.0
+                    HoverForeShade =50.0
                     PressedForeColor =4210752
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -227,61 +237,37 @@ PublishOption =1
                     WebImagePaddingBottom =1
                 End
                     OverlapFlags =85
-                    Left =3968
-                    Top =2387
-                    Width =732
+                    Left =9810
+                    Top =7020
+                    Width =1482
                     Height =510
+                    FontSize =16
+                    FontWeight =700
                     TabIndex =3
-                    ForeColor =4210752
+                    ForeColor =6373413
                     Name ="Command5"
-                    Caption ="Command4"
+                    Caption ="Remove -"
                     OnClick ="[Event Procedure]"
                     GridlineColor =10921638
-                        0x2800000010000000100000000100200000000000000000000000000000000000 ,
-                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-                        0x0000000000000000000000000000000020202030000800900000004000080010 ,
-                        0x0000000000000000000000000000000000000000000000000000000000000010 ,
-                        0x0000000000000000000000001010100010181080101010ff202020c010081020 ,
-                        0x1010100000000000000000000000000000000000101010004038309010101030 ,
-                        0x3030200000000000000000000000000020202050201810ff302820ff30282080 ,
-                        0x100810100000000000000000000000000008000030282020202820e010101020 ,
-                        0x3030200000000000000000000000000040303010202020a0201820f0303030e0 ,
-                        0x3030303000000000000000001010101010081010303030d02020209020202000 ,
-                        0x000000000000000000000000000000000000000030283020202020d0202020ff ,
-                        0x303030c020182010101010101010101020202090303030f03028202000000000 ,
-                        0x00000000000000000000000000000000000000000000000030303020302820d0 ,
-                        0x302820ff302830b020181030202020b0303030ff302820700000000000000000 ,
-                        0x0000000000000000000000000000000000000000000000000000000030383020 ,
-                        0x302820d0303030ff303030ff403830ff302830e0000000000000000000000000 ,
-                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-                        0x30303040303030ff403840ff303030e030202010000000000000000000000000 ,
-                        0x0000000000000000000000000000000000000000000000004040400040404030 ,
-                        0x404040d0403830ff303030f0303030f0302820b0302820100000000000000000 ,
-                        0x00000000000000000000000000000000000000004040400040404070404040ff ,
-                        0x404040ff505050a04038403040384090404040ff303030903028201000000000 ,
-                        0x0000000000000000000000004040402040404040404040b0404040ff404040ff ,
-                        0x505050b0505050100000000040383010504840b0404040ff3038309030303010 ,
-                        0x00000000000000004040400040404060404040b0403830ff404040ff50485080 ,
-                        0x504850000000000000000000000000003028201040404040504850f0404040a0 ,
-                        0x00000000000000004040400040484060404040ff404040f05048505050505000 ,
-                        0x0000000000000000000000000000000000000000404040005050502040484070 ,
-                        0x00000000000000000000000050485030504850c0504850405048500000000000 ,
-                        0x0000000000000000000000000000000000000000000000000000000000000000 ,
-                        0x0000000000000000
-                    End
 
-                    LayoutCachedLeft =3968
-                    LayoutCachedTop =2387
-                    LayoutCachedWidth =4700
-                    LayoutCachedHeight =2897
+                    LayoutCachedLeft =9810
+                    LayoutCachedTop =7020
+                    LayoutCachedWidth =11292
+                    LayoutCachedHeight =7530
+                    ForeThemeColorIndex =4
+                    ForeTint =100.0
+                    ForeShade =50.0
+                    Gradient =0
                     BackColor =14136213
                     BorderColor =14136213
-                    HoverColor =15060409
+                    HoverColor =16051931
+                    HoverThemeColorIndex =8
+                    HoverTint =20.0
                     PressedColor =9592887
-                    HoverForeColor =4210752
+                    HoverForeColor =6373413
+                    HoverForeThemeColorIndex =4
+                    HoverForeTint =100.0
+                    HoverForeShade =50.0
                     PressedForeColor =4210752
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -289,26 +275,37 @@ PublishOption =1
                     WebImagePaddingBottom =1
                 End
                     OverlapFlags =85
-                    Left =3685
-                    Top =3514
-                    Width =1303
-                    Height =559
+                    Left =16384
+                    Top =6859
+                    Width =1927
+                    Height =511
+                    FontSize =16
+                    FontWeight =700
                     TabIndex =4
-                    ForeColor =4210752
+                    ForeColor =6373413
                     Name ="Command6"
-                    Caption ="Confirm Selection"
+                    Caption ="Next >>"
                     OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =3685
-                    LayoutCachedTop =3514
-                    LayoutCachedWidth =4988
-                    LayoutCachedHeight =4073
+                    LayoutCachedLeft =16384
+                    LayoutCachedTop =6859
+                    LayoutCachedWidth =18311
+                    LayoutCachedHeight =7370
+                    ForeThemeColorIndex =4
+                    ForeTint =100.0
+                    ForeShade =50.0
+                    Gradient =0
                     BackColor =14136213
                     BorderColor =14136213
-                    HoverColor =15060409
+                    HoverColor =16051931
+                    HoverThemeColorIndex =8
+                    HoverTint =20.0
                     PressedColor =9592887
-                    HoverForeColor =4210752
+                    HoverForeColor =6373413
+                    HoverForeThemeColorIndex =4
+                    HoverForeTint =100.0
+                    HoverForeShade =50.0
                     PressedForeColor =4210752
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
@@ -318,7 +315,7 @@ PublishOption =1
                     Visible = NotDefault
                     OverlapFlags =85
                     IMESentenceMode =3
-                    Top =5272
+                    Top =8392
                     Height =315
                     TabIndex =5
                     BorderColor =10921638
@@ -326,28 +323,103 @@ PublishOption =1
                     Name ="Text7"
                     GridlineColor =10921638
 
-                    LayoutCachedTop =5272
+                    LayoutCachedTop =8392
                     LayoutCachedWidth =1701
-                    LayoutCachedHeight =5587
+                    LayoutCachedHeight =8707
                 End
                     OldBorderStyle =0
                     OverlapFlags =93
                     TextAlign =2
+                    BackStyle =0
                     IMESentenceMode =3
-                    Left =390
+                    Left =6585
+                    Top =2490
                     Width =7887
                     Height =735
                     FontSize =14
                     FontWeight =600
                     TabIndex =6
                     BorderColor =10921638
-                    ForeColor =4210752
+                    ForeColor =12349952
                     Name ="Text11"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =390
-                    LayoutCachedWidth =8277
-                    LayoutCachedHeight =735
+                    LayoutCachedLeft =6585
+                    LayoutCachedTop =2490
+                    LayoutCachedWidth =14472
+                    LayoutCachedHeight =3225
+                    ForeThemeColorIndex =-1
+                    ForeTint =100.0
+                End
+                    PictureType =2
+                    Left =8445
+                    Width =4350
+                    Height =2250
+                    BorderColor =10921638
+                    Name ="Image3"
+                    Picture ="Logo_transparent"
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =8445
+                    LayoutCachedWidth =12795
+                    LayoutCachedHeight =2250
+                    TabIndex =8
+                End
+                    Visible = NotDefault
+                    OverlapFlags =85
+                    Left =10590
+                    Top =8625
+                    TabIndex =7
+                    BorderColor =14136213
+                    Name ="Check15"
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =10590
+                    LayoutCachedTop =8625
+                    LayoutCachedWidth =10850
+                    LayoutCachedHeight =8865
+                    BorderThemeColorIndex =4
+                    BorderTint =60.0
+                    BorderShade =100.0
+                            Visible = NotDefault
+                            OverlapFlags =85
+                            Left =10924
+                            Top =8565
+                            Width =3570
+                            Height =405
+                            FontSize =16
+                            FontWeight =700
+                            BorderColor =8355711
+                            ForeColor =12349952
+                            Name ="Label16"
+                            Caption ="Update Pointer MatchKeys"
+                            GridlineColor =10921638
+                            LayoutCachedLeft =10924
+                            LayoutCachedTop =8565
+                            LayoutCachedWidth =14494
+                            LayoutCachedHeight =8970
+                            ForeThemeColorIndex =-1
+                            ForeTint =100.0
+                        End
+                    End
+                End
+                    PictureType =2
+                    Left =10091
+                    Top =5385
+                    Width =915
+                    Height =855
+                    BorderColor =10921638
+                    Name ="Image5"
+                    OnClick ="[Event Procedure]"
+                    ControlTipText ="Click for information"
+                    Picture ="informationButton"
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =10091
+                    LayoutCachedTop =5385
+                    LayoutCachedWidth =11006
+                    LayoutCachedHeight =6240
+                    TabIndex =9
                 End
             End
         End
@@ -362,6 +434,7 @@ Option Compare Database
 Public UPCIDsExisting As String
 Public UPCIDs As String
 Public strTable As String
+Public statusmsg As Variant
 
 Private Sub Command4_Click()
 
@@ -373,6 +446,8 @@ For i = 0 To List0.ListCount - 1
 Next i
 
 Me.List0.Selected(0) = True
+
+statusmsg = SysCmd(acSysCmdSetStatus, "Add or remove more UPCIDs or click Next to continue")
 
 End Sub
 
@@ -387,6 +462,8 @@ Next i
 
 Me.List2.Selected(0) = True
 
+statusmsg = SysCmd(acSysCmdSetStatus, "Add or remove more UPCIDs or click Next to continue")
+
 End Sub
 
 Private Sub Command6_Click()
@@ -396,6 +473,8 @@ Dim UPCIDsSplit() As String
 Dim ListBoxUPCIDs() As String
 Dim UnwantedListBoxUPCIDs() As String
 Dim hasUPRN As String
+
+On Error GoTo ErrorHandler:
 
 'strTable = Forms!FrontPage!Combo8.Value
 
@@ -500,7 +579,38 @@ If Text7.Value = "create" Then
        'End If
     End If
     'added more UPCID's
-      
+    
+    Dim strSQLDefault As String
+    
+    strSQL = "SELECT COLUMN_NAME"
+    strSQL = strSQL & " FROM [INFORMATION_SCHEMA].COLUMNS"
+    strSQL = strSQL & " WHERE COLUMN_NAME LIKE 'upcid%' AND TABLE_NAME = " & "'" & strTable & "'"
+       
+    'call the pass through function
+    ChangePTStatement "getUPCIDColumns", strSQL
+    
+    DoCmd.Close
+    DoCmd.OpenForm "selectUPCIDs", , , , , , strTable
+    
+    statusmsg = SysCmd(acSysCmdSetStatus, "Please select from the UPCIDs that you wish to populate. If Pointer needs updated then don't forget to check the relevant box. Click the 'i' for more information.")
+    
+    Forms!selectUPCIDs!Text7.Value = "add"
+       
+    Forms!selectUPCIDs!Text11.Value = "Select UPCID Columns to populate in the table " & strTable
+            
+    Forms!selectUPCIDs!List0.RowSource = Forms!selectUPCIDs!List2.RowSource
+    Forms!selectUPCIDs!List2.RowSource = ""
+    
+    If DLookup("date", "pointer_update") < (Date - 30) Then
+        Forms!selectUPCIDs!Check15.Visible = True
+        Forms!selectUPCIDs!Label16.Visible = True
+        Forms!selectUPCIDs!Check15.Value = False
+    Else
+        Forms!selectUPCIDs!Check15.Visible = True
+        Forms!selectUPCIDs!Label16.Visible = True
+        Forms!selectUPCIDs!Check15.Value = False
+        Forms!selectUPCIDs!Check15.Enabled = False
+    End If
 ElseIf Text7.Value = "add" Then
        Dim caseStates() As String
        Dim forSQL As String
@@ -569,13 +679,57 @@ ElseIf Text7.Value = "add" Then
           DoCmd.SetWarnings (True)
        End If
        
+       If Me.Check15.Value = True Then
+          If DLookup("counter", "getPointerUPCIDs") < 0 Then
+             DoCmd.SetWarnings (False)
+             'DoCmd.OpenQuery ("createUPCIDsPOINTER")
+             'DoCmd.OpenQuery ("addUPCIDsPOINTER")
+             strSQL = "UPDATE pointer_update SET [date] = '" & Date & "' WHERE ID = 1"
+             DoCmd.RunSQL strSQL
+             DoCmd.SetWarnings (True)
+          Else
+             If MsgBox("Update Pointer UPCIDs?", vbYesNo, "Continue?") = vbYes Then
+                DoCmd.SetWarnings (False)
+                'DoCmd.OpenQuery ("addUPCIDsPOINTER")
+                strSQL = "UPDATE pointer_update SET [date] = '" & Date & "' WHERE ID = 1"
+                DoCmd.RunSQL strSQL
+                DoCmd.SetWarnings (True)
+             End If
+          End If
+        End If
+               
         DoCmd.SetWarnings (False)
         DoCmd.OpenQuery ("addUPCIDsAddress")
         MsgBox "UPCIDs Added", vbOKOnly, "Complete"
         DoCmd.SetWarnings (True)
+        
+        strSQL = "SELECT COLUMN_NAME"
+        strSQL = strSQL & " FROM [INFORMATION_SCHEMA].COLUMNS"
+        strSQL = strSQL & " WHERE COLUMN_NAME LIKE 'upcid%' AND TABLE_NAME = " & "'" & strTable & "'"
+       
+        'call the pass through function
+        ChangePTStatement "getUPCIDColumns", strSQL
+    
+        DoCmd.OpenForm "selectUPCIDs", , , , , , strTable
 
+        Forms!selectUPCIDs!Text7.Value = "match"
+       
+        statusmsg = SysCmd(acSysCmdSetStatus, "Please order the UPCIDs in the order you wish them to be matched. Click the 'i' for more information.")
+       
+        Forms!selectUPCIDs!Text11.Value = "Select UPCID Columns from table " & strTable & " you wish to match on"
+       
+        If IsNull(DLookup("[table]", "UPCIDs", "[table] = '" & strTable & "'")) = False Then
+           Forms!selectUPCIDs!List0.RowSource = DLookup("UPCIDs", "UPCIDs", "[Table] = '" & strTable & "'")
+        Else
+           Forms!selectUPCIDs!List0.RowSource = ""
+        End If
+        
+        Forms!selectUPCIDs!List2.RowSource = ""
+        
+        Forms!selectUPCIDs!Check15.Visible = False
+        Forms!selectUPCIDs!Label16.Visible = False
+        
 ElseIf Text7.Value = "match" Then
-    MsgBox List2.RowSource
     caseStates = Split(Replace(List2.RowSource, ";", ", "), ", ")
                 
     sqlstr = ""
@@ -619,11 +773,14 @@ ElseIf Text7.Value = "match" Then
         DoCmd.OpenQuery ("addUPRN")
         MsgBox "UPRNs Added", vbOKOnly, "Complete"
         DoCmd.SetWarnings (True)
-       
+        DoCmd.Close
 End If
 
 'Forms!FrontPage!Command4.Enabled = True
-DoCmd.Close
+
+Exit Sub
+ErrorHandler:
+    MsgBox "An error occured -  error  " & Err.Number & ": " & Err.Description
 End Sub
 
 Public Sub ChangePTStatement(p_QueryName As String, p_sql As String)
@@ -649,7 +806,7 @@ UPCIDsExisting = ""
 UPCIDs = ""
        
 DoCmd.Maximize
-       
+
 sql = "select MatchKeys from getMatchKeysColumnPresent"
        
 Set RS = CurrentDb.OpenRecordset(sql)
@@ -687,5 +844,28 @@ Me.List0.RowSource = UPCIDs
 
 'Me.List0.RowSource = UPCIDsExisting
 'Me.List2.RowSource = ""
+
+End Sub
+
+Private Sub Image5_Click()
+statusmsg = SysCmd(acSysCmdRemoveMeter)
+
+statusmsg = SysCmd(acSysCmdSetStatus, "Opening More Information, please wait...")
+
+DoCmd.OpenForm "moreInformation"
+
+If Me.Text7.Value = "create" Then
+
+    Forms!moreInformation.infoText.Caption = "The list box on the left-hand side holds all possible UPCIDs that can be added to your selected table. The list box on the right-hand side shows all UPCIDs that are currently in the table or that will be added. To add UPCIDs from the left to the right simply click the UPCID you wish to move and click the add button. To remove a pre-existing UPCID or a UPCID that you have added simply select the UPCID and click remove. When you have selected all the UPCIDs you wish to add click the next button to continue."
+
+ElseIf Me.Text7.Value = "add" Then
+
+    Forms!moreInformation.infoText.Caption = "The list box on the left-hand side holds all UPCIDs columns that have been added to the table but not been populated. The right-hand list box shows all the UPCIDs that will be populated. To add UPCIDs from the left to the right simply click the UPCID you wish to move and click the add button. To remove a UPCID that you have added simply select the UPCID and click remove. If Pointer needs to be updated then check the relevant box. When you have selected all the UPCIDs you wish to populate click the next button to continue."
+
+ElseIf Me.Text7.Value = "match" Then
+
+    Forms!moreInformation.infoText.Caption = "The list box on the left-hand side holds all UPCIDs columns that have been populated with UPCIDs. The right-hand list box shows all the UPCIDs that will be macthed on to achieve a UPRN. To add UPCIDs from the left to the right simply click the UPCID you wish to move and click the add button. To remove a UPCID that you have added simply select the UPCID and click remove. When you have selected all the UPCIDs you wish to match on click the next button to continue. *Please note, you need to order the UPCIDs in the order that you wish them to be matched.*"
+
+End If
 
 End Sub

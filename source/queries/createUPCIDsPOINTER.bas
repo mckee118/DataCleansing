@@ -5,7 +5,7 @@
     "CID_N_FC_NP varchar(128), UPCID_N_3C_WP varchar(128), UPCID_N_3C_NP varchar(128)"
 dbMemo "Connect" ="ODBC;DSN=address;DATABASE=Address"
 dbBoolean "ReturnsRecords" ="0"
-dbInteger "ODBCTimeout" ="60"
+dbInteger "ODBCTimeout" ="0"
 dbBoolean "LogMessages" ="0"
 dbByte "Orientation" ="0"
 dbByte "PublishToWeb" ="1"

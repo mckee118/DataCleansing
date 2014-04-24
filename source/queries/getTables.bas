@@ -2,7 +2,7 @@
     "= 'BASE TABLE'\015\012AND TABLE_NAME LIKE '%_Address'\015\012"
 dbMemo "Connect" ="ODBC;DSN=address;DATABASE=Address"
 dbBoolean "ReturnsRecords" ="-1"
-dbInteger "ODBCTimeout" ="60"
+dbInteger "ODBCTimeout" ="0"
 dbBoolean "LogMessages" ="0"
 dbByte "Orientation" ="0"
 dbByte "PublishToWeb" ="1"
@@ -16,5 +16,6 @@ dbByte "PublishToWeb" ="1"
         dbLong "AggregateType" ="-1"
     End
         dbText "Name" ="COLUMN_NAME"
+        dbLong "AggregateType" ="-1"
     End
 End

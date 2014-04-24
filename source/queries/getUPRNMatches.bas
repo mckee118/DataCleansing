@@ -4,7 +4,7 @@
     "FROM G_address AS a INNER JOIN POINTER AS p ON a.uprn = p.uprn;"
 dbMemo "Connect" ="ODBC;DSN=address;DATABASE=Address"
 dbBoolean "ReturnsRecords" ="-1"
-dbInteger "ODBCTimeout" ="60"
+dbInteger "ODBCTimeout" ="0"
 dbBoolean "LogMessages" ="0"
 dbByte "Orientation" ="0"
 dbByte "PublishToWeb" ="1"
@@ -84,5 +84,6 @@ dbByte "PublishToWeb" ="1"
         dbLong "AggregateType" ="-1"
     End
         dbText "Name" ="upcid_n_nvd_wp"
+        dbLong "AggregateType" ="-1"
     End
 End
