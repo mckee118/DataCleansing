@@ -76,7 +76,7 @@ PublishOption =1
             GridlineThemeColorIndex =1
             GridlineShade =65.0
         End
-            Height =680
+            Height =1020
             BackColor =12419407
             Name ="Detail"
             AlternateBackColor =15921906
@@ -87,7 +87,7 @@ PublishOption =1
                     Left =120
                     Top =120
                     Width =6240
-                    Height =390
+                    Height =780
                     FontSize =16
                     FontWeight =700
                     BorderColor =8355711
@@ -98,7 +98,7 @@ PublishOption =1
                     LayoutCachedLeft =120
                     LayoutCachedTop =120
                     LayoutCachedWidth =6360
-                    LayoutCachedHeight =510
+                    LayoutCachedHeight =900
                     ForeThemeColorIndex =1
                     ForeTint =100.0
                 End

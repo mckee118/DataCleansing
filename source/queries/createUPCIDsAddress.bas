@@ -1,4 +1,4 @@
-﻿dbMemo "SQL" ="ALTER TABLE G_Address ADD UPCID_N_NP varchar(128), UPCID_WS_WP varchar(128)"
+﻿dbMemo "SQL" ="ALTER TABLE G_Address ADD UPCID_WS_WP varchar(128)"
 dbMemo "Connect" ="ODBC;DSN=address;DATABASE=Address"
 dbBoolean "ReturnsRecords" ="0"
 dbInteger "ODBCTimeout" ="0"

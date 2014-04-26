@@ -16,8 +16,8 @@ PublishOption =1
     ItemSuffix =6
     Left =360
     Top =360
-    Right =11550
-    Bottom =8910
+    Right =11295
+    Bottom =8655
     DatasheetGridlinesColor =14806254
         0x1f739f21f762e440
     End
@@ -324,6 +324,10 @@ Private Sub Combo8_Change()
 On Error GoTo ErrorHandler:
        Dim strSQL As String
        Dim strTable As String
+       Dim queryLength As Single
+       Dim queryLengthMin As Single
+       Dim length As Single
+       
        statusmsg = SysCmd(acSysCmdRemoveMeter)
        
        strTable = Combo8.Value 'set this to the value in dropdown list
@@ -335,12 +339,38 @@ On Error GoTo ErrorHandler:
 
        statusmsg = SysCmd(acSysCmdSetStatus, "Running extensive query, please wait...")
 
+       queryLength = Nz(DLookup("queryLength", "queryTime", "queryType = 'count' and queryTable = '" & strTable & "'"))
+       
+       If queryLength > 60 Then
+          queryLengthMin = Fix(queryLength / 60)
+          queryLength = Round(queryLength - (queryLengthMin * 60), 0)
+       Else
+          queryLengthMin = 0
+       End If
+       
        'Open the Msg Form, Pass a msg using OpenArgs
-       DoCmd.OpenForm "frmCustomMSG", , , , , , "This query may take some time, Please wait..."
+       If queryLength = 0 Then
+          DoCmd.OpenForm "frmCustomMSG", , , , , , "This query has not been run before and may take some time, Please wait..."
+       Else
+          DoCmd.OpenForm "frmCustomMSG", , , , , , "Estimated time: " & queryLengthMin & " minutes and " & queryLength & " seconds, Please wait..."
+       End If
        DoCmd.SetWarnings (False)   'Turn off default warning msg
        Pause (1)
+       
+       starttime = Timer
+       
        RecordCount.Caption = "There are " & Format(DLookup("[counter]", "countRowsAddress"), "##,##") & " records in the " & strTable & " table"
        RecordCount.Visible = True
+       
+       length = Fix(Format(Timer - starttime, "fixed")) + 1
+       
+       If queryLength = 0 Then
+          strSQL = "INSERT INTO queryTime VALUES ('count', '" & strTable & "', " & length & ")"
+          DoCmd.RunSQL strSQL
+       Else
+          strSQL = "UPDATE queryTime SET [queryLength] = " & length & " WHERE queryType = 'count' and queryTable = '" & strTable & "'"
+          DoCmd.RunSQL strSQL
+       End If
        
        statusmsg = SysCmd(acSysCmdSetStatus, "To continue click Next >>")
        'Application.SysCmd acSysCmdClearStatus
@@ -348,7 +378,6 @@ On Error GoTo ErrorHandler:
        DoCmd.SetWarnings (True)    'Turn on default warning msg
        'Close the Msg Form
        DoCmd.Close acForm, "frmCustomMSG", acSaveNo
-
        
 Exit Sub
 ErrorHandler:
@@ -422,7 +451,7 @@ Exit_Pause:
     Exit Function
 
 Err_Pause:
-    MsgBox Err.Number & " - " & Err.Description, vbCritical, "Pause()"
+    MsgBox Err.Number & " - " & Err.Description
     Resume Exit_Pause
 
 End Function

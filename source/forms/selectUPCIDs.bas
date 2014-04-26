@@ -14,8 +14,8 @@ PublishOption =1
     Width =18769
     DatasheetFontHeight =11
     ItemSuffix =17
-    Right =18765
-    Bottom =9165
+    Right =11295
+    Bottom =8655
     DatasheetGridlinesColor =14806254
         0xa9f965aa9b59e440
     End
@@ -438,7 +438,7 @@ Public statusmsg As Variant
 
 Private Sub Command4_Click()
 
-For i = 0 To List0.ListCount - 1
+For i = 0 To List0.listCount - 1
     If List0.Selected(i) Then
         List2.AddItem List0.Column(0)
         List0.RemoveItem List0.Column(0)
@@ -453,7 +453,7 @@ End Sub
 
 Private Sub Command5_Click()
 
-For i = 0 To List2.ListCount - 1
+For i = 0 To List2.listCount - 1
     If List2.Selected(i) Then
         List0.AddItem List2.Column(0)
         List2.RemoveItem List2.Column(0)
@@ -473,6 +473,10 @@ Dim UPCIDsSplit() As String
 Dim ListBoxUPCIDs() As String
 Dim UnwantedListBoxUPCIDs() As String
 Dim hasUPRN As String
+Dim queryLength As Single
+Dim queryLengthMin As Single
+Dim length As Single
+Dim listCount As Integer
 
 On Error GoTo ErrorHandler:
 
@@ -498,6 +502,31 @@ Dim wanted As String
 Dim unwanted As String
 
 unwanted = ""
+
+listCount = Me.List2.listCount
+
+If Check15.Value = True Then
+   queryLength = Nz(DLookup("queryLength", "queryTime", "queryType = '" & Text7.Value & listCount & "' and queryTable = '" & strTable & "'")) + Nz(DLookup("queryLength", "queryTime", "queryType = 'pointer'"))
+Else
+   queryLength = Nz(DLookup("queryLength", "queryTime", "queryType = '" & Text7.Value & listCount & "' and queryTable = '" & strTable & "'"))
+End If
+
+If queryLength > 60 Then
+   queryLengthMin = Fix(queryLength / 60)
+   queryLength = Round(queryLength - (queryLengthMin * 60), 0)
+Else
+   queryLengthMin = 0
+End If
+
+If queryLength = 0 Then
+   DoCmd.OpenForm "frmCustomMSG", , , , , , "This query has not been run before and may take some time, Please wait..."
+Else
+   DoCmd.OpenForm "frmCustomMSG", , , , , , "Estimated time: " & queryLengthMin & " minutes and " & queryLength & " seconds, Please wait..."
+End If
+
+Pause (1)
+       
+starttime = Timer
 
 If Text7.Value = "create" Then
     For i = LBound(ListBoxUPCIDs) To UBound(ListBoxUPCIDs)
@@ -579,6 +608,22 @@ If Text7.Value = "create" Then
        'End If
     End If
     'added more UPCID's
+    
+    length = Fix(Format(Timer - starttime, "fixed")) + 1
+    
+    DoCmd.SetWarnings (False)
+    
+    If queryLength = 0 Then
+       strSQL = "INSERT INTO queryTime VALUES ('" & Text7.Value & listCount & "', '" & strTable & "', " & length & ")"
+       DoCmd.RunSQL strSQL
+    Else
+       strSQL = "UPDATE queryTime SET [queryLength] = " & length & " WHERE queryType = '" & Text7.Value & listCount & "' and queryTable = '" & strTable & "'"
+       DoCmd.RunSQL strSQL
+    End If
+    
+    DoCmd.SetWarnings (True)
+    
+    DoCmd.Close acForm, "frmCustomMSG", acSaveNo
     
     Dim strSQLDefault As String
     
@@ -688,7 +733,7 @@ ElseIf Text7.Value = "add" Then
              DoCmd.RunSQL strSQL
              DoCmd.SetWarnings (True)
           Else
-             If MsgBox("Update Pointer UPCIDs?", vbYesNo, "Continue?") = vbYes Then
+             If MsgBox("Are you sure you want to update Pointer UPCIDs?", vbYesNo, "Continue?") = vbYes Then
                 DoCmd.SetWarnings (False)
                 'DoCmd.OpenQuery ("addUPCIDsPOINTER")
                 strSQL = "UPDATE pointer_update SET [date] = '" & Date & "' WHERE ID = 1"
@@ -703,6 +748,22 @@ ElseIf Text7.Value = "add" Then
         MsgBox "UPCIDs Added", vbOKOnly, "Complete"
         DoCmd.SetWarnings (True)
         
+        length = Fix(Format(Timer - starttime, "fixed")) + 1
+        
+        DoCmd.SetWarnings (False)
+        
+        If queryLength = 0 Then
+           strSQL = "INSERT INTO queryTime VALUES ('" & Text7.Value & listCount & "', '" & strTable & "', " & length & ")"
+           DoCmd.RunSQL strSQL
+        Else
+           strSQL = "UPDATE queryTime SET [queryLength] = " & length & " WHERE queryType = '" & Text7.Value & listCount & "' and queryTable = '" & strTable & "'"
+           DoCmd.RunSQL strSQL
+        End If
+        
+        DoCmd.SetWarnings (True)
+        
+        DoCmd.Close acForm, "frmCustomMSG", acSaveNo
+        
         strSQL = "SELECT COLUMN_NAME"
         strSQL = strSQL & " FROM [INFORMATION_SCHEMA].COLUMNS"
         strSQL = strSQL & " WHERE COLUMN_NAME LIKE 'upcid%' AND TABLE_NAME = " & "'" & strTable & "'"
@@ -710,6 +771,7 @@ ElseIf Text7.Value = "add" Then
         'call the pass through function
         ChangePTStatement "getUPCIDColumns", strSQL
     
+        DoCmd.Close
         DoCmd.OpenForm "selectUPCIDs", , , , , , strTable
 
         Forms!selectUPCIDs!Text7.Value = "match"
@@ -773,6 +835,23 @@ ElseIf Text7.Value = "match" Then
         DoCmd.OpenQuery ("addUPRN")
         MsgBox "UPRNs Added", vbOKOnly, "Complete"
         DoCmd.SetWarnings (True)
+        
+        length = Fix(Format(Timer - starttime, "fixed")) + 1
+
+        DoCmd.SetWarnings (False)
+        
+        If queryLength = 0 Then
+           strSQL = "INSERT INTO queryTime VALUES ('" & Text7.Value & listCount & "', '" & strTable & "', " & length & ")"
+           DoCmd.RunSQL strSQL
+        Else
+           strSQL = "UPDATE queryTime SET [queryLength] = " & length & " WHERE queryType = '" & Text7.Value & listCount & "' and queryTable = '" & strTable & "'"
+           DoCmd.RunSQL strSQL
+        End If
+        
+        DoCmd.SetWarnings (True)
+        
+        DoCmd.Close acForm, "frmCustomMSG", acSaveNo
+        
         DoCmd.Close
 End If
 
@@ -869,3 +948,23 @@ ElseIf Me.Text7.Value = "match" Then
 End If
 
 End Sub
+
+Public Function Pause(NumberOfSeconds As Variant)
+On Error GoTo Err_Pause
+
+    Dim PauseTime As Variant, start As Variant
+
+    PauseTime = NumberOfSeconds
+    start = Timer
+    Do While Timer < start + PauseTime
+    DoEvents
+    Loop
+
+Exit_Pause:
+    Exit Function
+
+Err_Pause:
+    MsgBox Err.Number & " - " & Err.Description
+    Resume Exit_Pause
+
+End Function
