@@ -526,8 +526,6 @@ End If
 
 Pause (1)
        
-starttime = Timer
-
 If Text7.Value = "create" Then
     For i = LBound(ListBoxUPCIDs) To UBound(ListBoxUPCIDs)
         For j = LBound(UPCIDsSplit) To UBound(UPCIDsSplit)
@@ -551,6 +549,8 @@ If Text7.Value = "create" Then
     wanted = Replace(wanted, "@, ", "")
     
     wanted = Replace(wanted, "@", "")
+    
+    starttime = Timer
     
     If unwanted <> "" Then
         unwanted = Left(unwanted, Len(unwanted) - 2)
@@ -709,7 +709,6 @@ ElseIf Text7.Value = "add" Then
        'call the pass through function
        ChangePTStatement "addUPCIDsAddress", strSQL
        
-       
        If IsNull(DLookup("table", "UPCIDs", "table = '" & strTable & "'")) = True Then
           strSQL = "INSERT INTO UPCIDs ([table], UPCIDs) VALUES ('" & strTable & "', '" & forSQL & "')"
           DoCmd.SetWarnings (False)
@@ -724,42 +723,62 @@ ElseIf Text7.Value = "add" Then
           DoCmd.SetWarnings (True)
        End If
        
+       Dim pointerLength As Single
+       
        If Me.Check15.Value = True Then
           If DLookup("counter", "getPointerUPCIDs") < 0 Then
              DoCmd.SetWarnings (False)
-             'DoCmd.OpenQuery ("createUPCIDsPOINTER")
-             'DoCmd.OpenQuery ("addUPCIDsPOINTER")
+             starttime = Timer
+             DoCmd.OpenQuery ("createUPCIDsPOINTER")
+             DoCmd.OpenQuery ("addUPCIDsPOINTER")
+             pointerLength = Fix(Format(Timer - starttime, "fixed")) + 1
              strSQL = "UPDATE pointer_update SET [date] = '" & Date & "' WHERE ID = 1"
              DoCmd.RunSQL strSQL
              DoCmd.SetWarnings (True)
           Else
              If MsgBox("Are you sure you want to update Pointer UPCIDs?", vbYesNo, "Continue?") = vbYes Then
                 DoCmd.SetWarnings (False)
-                'DoCmd.OpenQuery ("addUPCIDsPOINTER")
+                starttime = Timer
+                DoCmd.OpenQuery ("addUPCIDsPOINTER")
+                pointerLength = Fix(Format(Timer - starttime, "fixed")) + 1
                 strSQL = "UPDATE pointer_update SET [date] = '" & Date & "' WHERE ID = 1"
                 DoCmd.RunSQL strSQL
                 DoCmd.SetWarnings (True)
              End If
           End If
         End If
-               
+        
+        starttime = Timer
+        
         DoCmd.SetWarnings (False)
         DoCmd.OpenQuery ("addUPCIDsAddress")
         MsgBox "UPCIDs Added", vbOKOnly, "Complete"
         DoCmd.SetWarnings (True)
-        
+                
         length = Fix(Format(Timer - starttime, "fixed")) + 1
-        
+                
         DoCmd.SetWarnings (False)
-        
-        If queryLength = 0 Then
-           strSQL = "INSERT INTO queryTime VALUES ('" & Text7.Value & listCount & "', '" & strTable & "', " & length & ")"
-           DoCmd.RunSQL strSQL
+        If Check15.Value = True Then
+            If queryLength = 0 Then
+               strSQL = "INSERT INTO queryTime VALUES ('" & Text7.Value & listCount & "', '" & strTable & "', " & length & ")"
+               DoCmd.RunSQL strSQL
+               strSQL = "INSERT INTO queryTime VALUES ('pointer', 'pointer', " & pointerLength & ")"
+               DoCmd.RunSQL strSQL
+            Else
+               strSQL = "UPDATE queryTime SET [queryLength] = " & length & " WHERE queryType = '" & Text7.Value & listCount & "' and queryTable = '" & strTable & "'"
+               DoCmd.RunSQL strSQL
+               strSQL = "UPDATE queryTime SET [queryLength] = " & pointerLength & " WHERE queryType = 'pointer' and queryTable = 'pointer'"
+               DoCmd.RunSQL strSQL
+            End If
         Else
-           strSQL = "UPDATE queryTime SET [queryLength] = " & length & " WHERE queryType = '" & Text7.Value & listCount & "' and queryTable = '" & strTable & "'"
-           DoCmd.RunSQL strSQL
+            If queryLength = 0 Then
+               strSQL = "INSERT INTO queryTime VALUES ('" & Text7.Value & listCount & "', '" & strTable & "', " & length & ")"
+               DoCmd.RunSQL strSQL
+            Else
+               strSQL = "UPDATE queryTime SET [queryLength] = " & length & " WHERE queryType = '" & Text7.Value & listCount & "' and queryTable = '" & strTable & "'"
+               DoCmd.RunSQL strSQL
+            End If
         End If
-        
         DoCmd.SetWarnings (True)
         
         DoCmd.Close acForm, "frmCustomMSG", acSaveNo
@@ -831,6 +850,8 @@ ElseIf Text7.Value = "match" Then
        'call the pass through function
        ChangePTStatement "addUPRN", strSQL
        
+        starttime = Timer
+       
         DoCmd.SetWarnings (False)
         DoCmd.OpenQuery ("addUPRN")
         MsgBox "UPRNs Added", vbOKOnly, "Complete"
@@ -864,6 +885,7 @@ End Sub
 
 Public Sub ChangePTStatement(p_QueryName As String, p_sql As String)
 'for changing pass-through's in this db
+'dark11984 Access Forums
     Dim qdef As DAO.QueryDef
  
     Set qdef = CurrentDb.QueryDefs(p_QueryName)
