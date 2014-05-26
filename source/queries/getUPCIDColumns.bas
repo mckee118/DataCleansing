@@ -1,5 +1,5 @@
 ﻿dbMemo "SQL" ="SELECT COLUMN_NAME FROM [INFORMATION_SCHEMA].COLUMNS WHERE COLUMN_NAME LIKE 'upc"
-    "id%' AND TABLE_NAME = 'G_Address'"
+    "id%' AND TABLE_NAME = 'D_address'"
 dbMemo "Connect" ="ODBC;DSN=address;DATABASE=Address"
 dbBoolean "ReturnsRecords" ="-1"
 dbInteger "ODBCTimeout" ="0"

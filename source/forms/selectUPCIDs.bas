@@ -13,8 +13,9 @@ PublishOption =1
     GridY =10
     Width =18769
     DatasheetFontHeight =11
-    ItemSuffix =17
-    Right =11295
+    ItemSuffix =22
+    Top =195
+    Right =8250
     Bottom =8655
     DatasheetGridlinesColor =14806254
         0xa9f965aa9b59e440
@@ -138,6 +139,19 @@ PublishOption =1
             GridlineThemeColorIndex =1
             GridlineShade =65.0
         End
+            SpecialEffect =2
+            OldBorderStyle =1
+            Width =4536
+            Height =2835
+            ThemeFontIndex =1
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            ForeThemeColorIndex =2
+            ForeShade =50.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
             Height =9977
             BackColor =15590879
             Name ="Detail"
@@ -148,7 +162,7 @@ PublishOption =1
                     OverlapFlags =87
                     IMESentenceMode =3
                     Left =6585
-                    Top =3225
+                    Top =3855
                     Width =3005
                     Height =5160
                     FontSize =14
@@ -160,13 +174,15 @@ PublishOption =1
                     RowSource ="UPCID_N_NP, UPCID_WS_WP, UPCID_WS_NP, UPCID_CS_WP, UPCID_CS_NP, UPCID_N_NVD_WP, "
                         "UPCID_N_NVD_NP, UPCID_NVD_WP, UPCID_NVD_NP, UPCID_N_FC_WP, UPCID_N_FC_NP, UPCID_"
                         "N_3C_WP, UPCID_N_3C_NP"
+                    OnClick ="[Event Procedure]"
+                    ControlTipText ="UPCID_WS_WP = Whole street address including numbers + whole postcode"
                     GridlineColor =10921638
                     AllowValueListEdits =0
 
                     LayoutCachedLeft =6585
-                    LayoutCachedTop =3225
+                    LayoutCachedTop =3855
                     LayoutCachedWidth =9590
-                    LayoutCachedHeight =8385
+                    LayoutCachedHeight =9015
                     BackThemeColorIndex =4
                     BackShade =75.0
                     ForeThemeColorIndex =-1
@@ -176,7 +192,7 @@ PublishOption =1
                     OverlapFlags =87
                     IMESentenceMode =3
                     Left =11505
-                    Top =3225
+                    Top =3855
                     Width =3005
                     Height =5160
                     FontSize =14
@@ -186,13 +202,15 @@ PublishOption =1
                     BorderColor =10921638
                     Name ="List2"
                     RowSourceType ="Value List"
+                    RowSource ="UPCID_N_WP"
+                    OnClick ="[Event Procedure]"
                     GridlineColor =10921638
                     AllowValueListEdits =0
 
                     LayoutCachedLeft =11505
-                    LayoutCachedTop =3225
+                    LayoutCachedTop =3855
                     LayoutCachedWidth =14510
-                    LayoutCachedHeight =8385
+                    LayoutCachedHeight =9015
                     BackThemeColorIndex =4
                     BackShade =75.0
                     ForeThemeColorIndex =-1
@@ -200,7 +218,7 @@ PublishOption =1
                 End
                     OverlapFlags =85
                     Left =9810
-                    Top =4125
+                    Top =4755
                     Width =1482
                     Height =510
                     FontSize =16
@@ -213,9 +231,9 @@ PublishOption =1
                     GridlineColor =10921638
 
                     LayoutCachedLeft =9810
-                    LayoutCachedTop =4125
+                    LayoutCachedTop =4755
                     LayoutCachedWidth =11292
-                    LayoutCachedHeight =4635
+                    LayoutCachedHeight =5265
                     ForeThemeColorIndex =4
                     ForeTint =100.0
                     ForeShade =50.0
@@ -235,10 +253,11 @@ PublishOption =1
                     WebImagePaddingTop =2
                     WebImagePaddingRight =1
                     WebImagePaddingBottom =1
+                    Overlaps =1
                 End
                     OverlapFlags =85
                     Left =9810
-                    Top =7020
+                    Top =7650
                     Width =1482
                     Height =510
                     FontSize =16
@@ -251,9 +270,9 @@ PublishOption =1
                     GridlineColor =10921638
 
                     LayoutCachedLeft =9810
-                    LayoutCachedTop =7020
+                    LayoutCachedTop =7650
                     LayoutCachedWidth =11292
-                    LayoutCachedHeight =7530
+                    LayoutCachedHeight =8160
                     ForeThemeColorIndex =4
                     ForeTint =100.0
                     ForeShade =50.0
@@ -273,6 +292,7 @@ PublishOption =1
                     WebImagePaddingTop =2
                     WebImagePaddingRight =1
                     WebImagePaddingBottom =1
+                    Overlaps =1
                 End
                     OverlapFlags =85
                     Left =16384
@@ -311,6 +331,7 @@ PublishOption =1
                     WebImagePaddingTop =2
                     WebImagePaddingRight =1
                     WebImagePaddingBottom =1
+                    Overlaps =1
                 End
                     Visible = NotDefault
                     OverlapFlags =85
@@ -333,7 +354,7 @@ PublishOption =1
                     BackStyle =0
                     IMESentenceMode =3
                     Left =6585
-                    Top =2490
+                    Top =3120
                     Width =7887
                     Height =735
                     FontSize =14
@@ -345,9 +366,9 @@ PublishOption =1
                     GridlineColor =10921638
 
                     LayoutCachedLeft =6585
-                    LayoutCachedTop =2490
+                    LayoutCachedTop =3120
                     LayoutCachedWidth =14472
-                    LayoutCachedHeight =3225
+                    LayoutCachedHeight =3855
                     ForeThemeColorIndex =-1
                     ForeTint =100.0
                 End
@@ -368,23 +389,23 @@ PublishOption =1
                     Visible = NotDefault
                     OverlapFlags =85
                     Left =10590
-                    Top =8625
+                    Top =9255
                     TabIndex =7
                     BorderColor =14136213
                     Name ="Check15"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =10590
-                    LayoutCachedTop =8625
+                    LayoutCachedTop =9255
                     LayoutCachedWidth =10850
-                    LayoutCachedHeight =8865
+                    LayoutCachedHeight =9495
                     BorderThemeColorIndex =4
                     BorderTint =60.0
                     BorderShade =100.0
                             Visible = NotDefault
                             OverlapFlags =85
                             Left =10924
-                            Top =8565
+                            Top =9195
                             Width =3570
                             Height =405
                             FontSize =16
@@ -395,9 +416,9 @@ PublishOption =1
                             Caption ="Update Pointer MatchKeys"
                             GridlineColor =10921638
                             LayoutCachedLeft =10924
-                            LayoutCachedTop =8565
+                            LayoutCachedTop =9195
                             LayoutCachedWidth =14494
-                            LayoutCachedHeight =8970
+                            LayoutCachedHeight =9600
                             ForeThemeColorIndex =-1
                             ForeTint =100.0
                         End
@@ -405,7 +426,7 @@ PublishOption =1
                 End
                     PictureType =2
                     Left =10091
-                    Top =5385
+                    Top =6015
                     Width =915
                     Height =855
                     BorderColor =10921638
@@ -416,10 +437,77 @@ PublishOption =1
                     GridlineColor =10921638
 
                     LayoutCachedLeft =10091
-                    LayoutCachedTop =5385
+                    LayoutCachedTop =6015
                     LayoutCachedWidth =11006
-                    LayoutCachedHeight =6240
+                    LayoutCachedHeight =6870
                     TabIndex =9
+                End
+                    PictureType =2
+                    Left =7530
+                    Top =2490
+                    Width =5865
+                    Height =615
+                    BorderColor =10921638
+                    Name ="Image17"
+                    Picture ="dots"
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =7530
+                    LayoutCachedTop =2490
+                    LayoutCachedWidth =13395
+                    LayoutCachedHeight =3105
+                    TabIndex =10
+                End
+                    Visible = NotDefault
+                    PictureType =2
+                    Left =8775
+                    Top =2520
+                    Width =375
+                    Height =480
+                    BorderColor =10921638
+                    Name ="step1"
+                    Picture ="dotSelected"
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =8775
+                    LayoutCachedTop =2520
+                    LayoutCachedWidth =9150
+                    LayoutCachedHeight =3000
+                    TabIndex =11
+                End
+                    Visible = NotDefault
+                    PictureType =2
+                    Left =10200
+                    Top =2520
+                    Width =375
+                    Height =480
+                    BorderColor =10921638
+                    Name ="step2"
+                    Picture ="dotSelected"
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =10200
+                    LayoutCachedTop =2520
+                    LayoutCachedWidth =10575
+                    LayoutCachedHeight =3000
+                    TabIndex =12
+                End
+                    Visible = NotDefault
+                    PictureType =2
+                    Left =11625
+                    Top =2505
+                    Width =375
+                    Height =480
+                    BorderColor =10921638
+                    Name ="step3"
+                    Picture ="dotSelected"
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =11625
+                    LayoutCachedTop =2505
+                    LayoutCachedWidth =12000
+                    LayoutCachedHeight =2985
+                    TabIndex =13
                 End
             End
         End
@@ -480,8 +568,6 @@ Dim listCount As Integer
 
 On Error GoTo ErrorHandler:
 
-'strTable = Forms!FrontPage!Combo8.Value
-
 UPCIDsSplit() = Split(UPCIDsExisting, ", ")
 
 ListBoxUPCIDs() = Split(Replace(List2.RowSource, ";", ", "), ", ")
@@ -527,6 +613,7 @@ End If
 Pause (1)
        
 If Text7.Value = "create" Then
+       
     For i = LBound(ListBoxUPCIDs) To UBound(ListBoxUPCIDs)
         For j = LBound(UPCIDsSplit) To UBound(UPCIDsSplit)
             If ListBoxUPCIDs(i) = UPCIDsSplit(j) Then
@@ -600,14 +687,7 @@ If Text7.Value = "create" Then
                           
        End If
               
-       'If IsNull(DLookup("table", "UPCIDs", "table = '" & strTable & "'")) = True Then
-       '   strSQL = "INSERT INTO UPCIDs ([table]) VALUES ('" & strTable & "')"
-       '   DoCmd.SetWarnings (False)
-       '   DoCmd.RunSQL strSQL
-       '   DoCmd.SetWarnings (True)
-       'End If
     End If
-    'added more UPCID's
     
     length = Fix(Format(Timer - starttime, "fixed")) + 1
     
@@ -646,6 +726,8 @@ If Text7.Value = "create" Then
     Forms!selectUPCIDs!List0.RowSource = Forms!selectUPCIDs!List2.RowSource
     Forms!selectUPCIDs!List2.RowSource = ""
     
+    Forms!selectUPCIDs!step2.Visible = True
+    
     If DLookup("date", "pointer_update") < (Date - 30) Then
         Forms!selectUPCIDs!Check15.Visible = True
         Forms!selectUPCIDs!Label16.Visible = True
@@ -657,6 +739,7 @@ If Text7.Value = "create" Then
         Forms!selectUPCIDs!Check15.Enabled = False
     End If
 ElseIf Text7.Value = "add" Then
+
        Dim caseStates() As String
        Dim forSQL As String
        caseStates = Split(Replace(List2.RowSource, ";", ", "), ", ")
@@ -691,7 +774,7 @@ ElseIf Text7.Value = "add" Then
             Case "UPCID_NVD_WP"
                 sqlstr = sqlstr & sqlDefault & " upcid_nvd_wp = dbo.unwanted(REPLACE(DBO.nvd(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')) +ISNULL(POSTCODE, ''), ' ', ''))"
             Case "UPCID_NVD_NP"
-                sqlstr = sqlstr & sqlDefault & " upcid_nvd_np = dbo.unwanted(REPLACE(DBO.nvd(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')) +POINTER.DBO.fn_extract_chars(ISNULL(POSTCODE, ''), 'numbers'), ' ', ''))"
+                sqlstr = sqlstr & sqlDefault & " upcid_nvd_np = dbo.unwanted(REPLACE(DBO.nvd(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, '')) + DBO.fn_extract_chars(ISNULL(POSTCODE, ''), 'numbers'), ' ', ''))"
             Case "UPCID_N_FC_WP"
                 sqlstr = sqlstr & sqlDefault & " upcid_n_fc_wp = dbo.unwanted(REPLACE(DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'numbers')+LEFT(DBO.fn_extract_chars(ISNULL(Address1, '')+ISNULL(Address2, '')+ISNULL(Address3, '')+ISNULL(Address4, ''), 'letters'), 1)+ISNULL(POSTCODE, ''), ' ', ''))"
             Case "UPCID_N_FC_NP"
@@ -704,7 +787,6 @@ ElseIf Text7.Value = "add" Then
        Next i
               
        strSQL = sqlstr
-       'strSQL = Left(strSQL, Len(strSQL) - 2)
              
        'call the pass through function
        ChangePTStatement "addUPCIDsAddress", strSQL
@@ -726,7 +808,7 @@ ElseIf Text7.Value = "add" Then
        Dim pointerLength As Single
        
        If Me.Check15.Value = True Then
-          If DLookup("counter", "getPointerUPCIDs") < 0 Then
+          If DLookup("counter", "getPointerUPCIDs") <= 0 Then
              DoCmd.SetWarnings (False)
              starttime = Timer
              DoCmd.OpenQuery ("createUPCIDsPOINTER")
@@ -810,7 +892,10 @@ ElseIf Text7.Value = "add" Then
         Forms!selectUPCIDs!Check15.Visible = False
         Forms!selectUPCIDs!Label16.Visible = False
         
+        Forms!selectUPCIDs!step3.Visible = True
+        
 ElseIf Text7.Value = "match" Then
+    
     caseStates = Split(Replace(List2.RowSource, ";", ", "), ", ")
                 
     sqlstr = ""
@@ -850,9 +935,18 @@ ElseIf Text7.Value = "match" Then
        'call the pass through function
        ChangePTStatement "addUPRN", strSQL
        
+       strSQL = "SELECT COUNT(*) AS col FROM " & strTable & " WHERE uprn IS NULL"
+       
+       ChangePTStatement "countUPRN", strSQL
+              
         starttime = Timer
        
+        statusmsg = SysCmd(acSysCmdSetStatus, "Matching process has begun, Please Wait...")
+       
+        Dim uprnCount As Integer
+       
         DoCmd.SetWarnings (False)
+        uprnCount = DLookup("col", "countUPRN")
         DoCmd.OpenQuery ("addUPRN")
         MsgBox "UPRNs Added", vbOKOnly, "Complete"
         DoCmd.SetWarnings (True)
@@ -874,12 +968,15 @@ ElseIf Text7.Value = "match" Then
         DoCmd.Close acForm, "frmCustomMSG", acSaveNo
         
         DoCmd.Close
+                
+        DoCmd.OpenForm "whatNext", , , , , , strTable & "|" & uprnCount
+        
+        statusmsg = SysCmd(acSysCmdSetStatus, "Select the option to carry out next.")
 End If
-
-'Forms!FrontPage!Command4.Enabled = True
 
 Exit Sub
 ErrorHandler:
+    DoCmd.Close acForm, "frmCustomMSG", acSaveNo
     MsgBox "An error occured -  error  " & Err.Number & ": " & Err.Description
 End Sub
 
@@ -943,9 +1040,6 @@ Me.List0.RowSourceType = "Value List"
 Me.List2.RowSource = UPCIDsExisting
 Me.List0.RowSource = UPCIDs
 
-'Me.List0.RowSource = UPCIDsExisting
-'Me.List2.RowSource = ""
-
 End Sub
 
 Private Sub Image5_Click()
@@ -957,15 +1051,15 @@ DoCmd.OpenForm "moreInformation"
 
 If Me.Text7.Value = "create" Then
 
-    Forms!moreInformation.infoText.Caption = "The list box on the left-hand side holds all possible UPCIDs that can be added to your selected table. The list box on the right-hand side shows all UPCIDs that are currently in the table or that will be added. To add UPCIDs from the left to the right simply click the UPCID you wish to move and click the add button. To remove a pre-existing UPCID or a UPCID that you have added simply select the UPCID and click remove. When you have selected all the UPCIDs you wish to add click the next button to continue."
+    Forms!moreInformation.infoText.Caption = "The list box on the left-hand side holds all possible UPCIDs that can be added to your selected table. The list box on the right-hand side shows all UPCIDs that are currently in the table or that will be added. To add UPCIDs from the left to the right simply click the UPCID you wish to move and click the add button. To remove a pre-existing UPCID or a UPCID that you have added simply select the UPCID and click remove. When you have selected all the UPCIDs you wish to add click the next button to continue." & vbNewLine & "For more deatils on the selected UPCID make sure it is selected and simply hover over the UPCID."
 
 ElseIf Me.Text7.Value = "add" Then
 
-    Forms!moreInformation.infoText.Caption = "The list box on the left-hand side holds all UPCIDs columns that have been added to the table but not been populated. The right-hand list box shows all the UPCIDs that will be populated. To add UPCIDs from the left to the right simply click the UPCID you wish to move and click the add button. To remove a UPCID that you have added simply select the UPCID and click remove. If Pointer needs to be updated then check the relevant box. When you have selected all the UPCIDs you wish to populate click the next button to continue."
+    Forms!moreInformation.infoText.Caption = "The list box on the left-hand side holds all UPCIDs columns that have been added to the table but not been populated. The right-hand list box shows all the UPCIDs that will be populated. To add UPCIDs from the left to the right simply click the UPCID you wish to move and click the add button. To remove a UPCID that you have added simply select the UPCID and click remove. If Pointer needs to be updated then check the relevant box. When you have selected all the UPCIDs you wish to populate click the next button to continue." & vbNewLine & "For more deatils on the selected UPCID make sure it is selected and simply hover over the UPCID."
 
 ElseIf Me.Text7.Value = "match" Then
 
-    Forms!moreInformation.infoText.Caption = "The list box on the left-hand side holds all UPCIDs columns that have been populated with UPCIDs. The right-hand list box shows all the UPCIDs that will be macthed on to achieve a UPRN. To add UPCIDs from the left to the right simply click the UPCID you wish to move and click the add button. To remove a UPCID that you have added simply select the UPCID and click remove. When you have selected all the UPCIDs you wish to match on click the next button to continue. *Please note, you need to order the UPCIDs in the order that you wish them to be matched.*"
+    Forms!moreInformation.infoText.Caption = "The list box on the left-hand side holds all UPCIDs columns that have been populated with UPCIDs. The right-hand list box shows all the UPCIDs that will be macthed on to achieve a UPRN. To add UPCIDs from the left to the right simply click the UPCID you wish to move and click the add button. To remove a UPCID that you have added simply select the UPCID and click remove. When you have selected all the UPCIDs you wish to match on click the next button to continue. *Please note, you need to order the UPCIDs in the order that you wish them to be matched.*" & vbNewLine & "For more deatils on the selected UPCID make sure it is selected and simply hover over the UPCID."
 
 End If
 
@@ -990,3 +1084,15 @@ Err_Pause:
     Resume Exit_Pause
 
 End Function
+
+Private Sub List0_Click()
+With Me.List0
+.ControlTipText = .Value & " = " & DLookup("Description", "matchKeys", "MatchKeys = '" & .Value & "'")
+End With
+End Sub
+
+Private Sub List2_Click()
+With Me.List2
+.ControlTipText = .Value & " = " & DLookup("Description", "matchKeys", "MatchKeys = '" & .Value & "'")
+End With
+End Sub

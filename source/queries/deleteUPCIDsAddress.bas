@@ -1,6 +1,5 @@
-﻿dbMemo "SQL" ="ALTER TABLE G_Address DROP COLUMN UPCID_CS_WP, UPCID_CS_NP, UPCID_N_NVD_WP, UPCI"
-    "D_N_NVD_NP, UPCID_NVD_WP, UPCID_NVD_NP, UPCID_N_FC_WP, UPCID_N_FC_NP, UPCID_N_3C"
-    "_WP, UPCID_N_3C_NP"
+﻿dbMemo "SQL" ="ALTER TABLE D_address DROP COLUMN UPCID_N_WP, UPCID_WS_WP, UPCID_N_NVD_WP, UPCID"
+    "_N_3C_WP"
 dbMemo "Connect" ="ODBC;DSN=address;DATABASE=Address"
 dbBoolean "ReturnsRecords" ="0"
 dbInteger "ODBCTimeout" ="0"

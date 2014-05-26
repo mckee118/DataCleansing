@@ -16,8 +16,8 @@ PublishOption =1
     ItemSuffix =6
     Left =360
     Top =360
-    Right =11295
-    Bottom =8655
+    Right =16185
+    Bottom =8910
     DatasheetGridlinesColor =14806254
         0x1f739f21f762e440
     End
@@ -373,7 +373,6 @@ On Error GoTo ErrorHandler:
        End If
        
        statusmsg = SysCmd(acSysCmdSetStatus, "To continue click Next >>")
-       'Application.SysCmd acSysCmdClearStatus
        
        DoCmd.SetWarnings (True)    'Turn on default warning msg
        'Close the Msg Form
@@ -381,6 +380,7 @@ On Error GoTo ErrorHandler:
        
 Exit Sub
 ErrorHandler:
+    DoCmd.Close acForm, "frmCustomMSG", acSaveNo
     MsgBox "An error occured -  error  " & Err.Number & ": " & Err.Description
 End Sub
 
@@ -393,7 +393,6 @@ On Error GoTo ErrorHandler:
        
        strTable = Combo8.Value 'set this to the value in dropdown list
           
-       'Forms!selectUPCIDs!List0.RowSourceType = "Table/Query"
        
        strSQL = "SELECT COLUMN_NAME FROM [INFORMATION_SCHEMA].COLUMNS WHERE COLUMN_NAME LIKE 'upcid%' AND TABLE_NAME = '" & strTable & "'"
 
@@ -407,6 +406,8 @@ On Error GoTo ErrorHandler:
        Forms!selectUPCIDs!Text7.Value = "create"
        
        Forms!selectUPCIDs!Text11.Value = "Select UPCID Columns to add to the table " & strTable
+       
+       Forms!selectUPCIDs!step1.Visible = True
        
        statusmsg = SysCmd(acSysCmdSetStatus, "Please select the UPCIDs you wish to add to/delete from the selected table. Click the 'i' for more information.")
            
